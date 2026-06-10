@@ -1082,7 +1082,7 @@
       <!-- Invoicer -->
       <div class="app-card" onclick="openVideo('app-videos/invoicer-demo.mp4','Invoicer — Invoice Management App')">
         <div class="app-video-thumb">
-          <video src="app-videos/invoicer-demo.mp4" muted preload="metadata"></video>
+          <video src="app-videos/invoicer-demo.mp4" muted preload="none"></video>
           <div class="app-play-btn">
             <div class="app-play-circle">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
@@ -1105,7 +1105,7 @@
       <!-- Pickleball Hub POS -->
       <div class="app-card" onclick="openVideo('app-videos/pickleball-hub-demo.mp4','Pickleball Hub POS — Point of Sale System')">
         <div class="app-video-thumb">
-          <video src="app-videos/pickleball-hub-demo.mp4" muted preload="metadata"></video>
+          <video src="app-videos/pickleball-hub-demo.mp4" muted preload="none"></video>
           <div class="app-play-btn">
             <div class="app-play-circle">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
@@ -1803,9 +1803,14 @@ function openVideo(src, title) {
   const vid = document.getElementById('modalVideo');
   vid.src = src;
   vid.title = title;
+  vid.currentTime = 0;
+  vid.load();
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
-  vid.play().catch(() => {});
+  vid.addEventListener('canplay', function onCanPlay() {
+    vid.removeEventListener('canplay', onCanPlay);
+    vid.play().catch(() => {});
+  });
 }
 function closeVideo() {
   const modal = document.getElementById('videoModal');
