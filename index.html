@@ -198,7 +198,8 @@
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth;font-family:'Space Grotesk',sans-serif}
-    body{background:#0D0D0D;color:#F3F3F3;overflow-x:hidden}
+    html,body{overflow-x:hidden;max-width:100%}
+    body{background:#0D0D0D;color:#F3F3F3}
     ::-webkit-scrollbar{width:3px}
     ::-webkit-scrollbar-track{background:#0D0D0D}
     ::-webkit-scrollbar-thumb{background:#8A4DFF;border-radius:4px}
@@ -635,6 +636,7 @@
     }
     .social-link:hover{border-color:rgba(138,77,255,.45);color:#8A4DFF}
     .contact-form{padding:38px 34px;border-radius:28px;border:1px solid rgba(255,255,255,.07);background:#111}
+    @media(max-width:480px){.contact-form{padding:28px 18px}}
     .form-title{font-size:20px;font-weight:700;margin-bottom:26px}
     .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     .form-group{display:flex;flex-direction:column}
@@ -1707,9 +1709,13 @@
               <p class="contact-email-val">hirememarc2992@gmail.com</p>
             </div>
           </a>
-          <div class="social-links">
-            <a href="https://www.linkedin.com/in/marc-patrick-orcullo-8903b117a" class="social-link" rel="noopener noreferrer" target="_blank"><svg width="15" height="15"><use href="#ico-linkedin"/></svg>LinkedIn</a>
-          </div>
+          <a href="https://www.linkedin.com/in/marc-patrick-orcullo-8903b117a" class="contact-email" rel="noopener noreferrer" target="_blank">
+            <div class="contact-email-icon"><svg width="16" height="16" style="color:#8A4DFF"><use href="#ico-linkedin"/></svg></div>
+            <div>
+              <p class="contact-email-lbl">LinkedIn</p>
+              <p class="contact-email-val">marc-patrick-orcullo</p>
+            </div>
+          </a>
           </address>
         </div>
       </div>
