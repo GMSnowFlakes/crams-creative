@@ -348,6 +348,48 @@
     .orb{position:absolute;border-radius:50%;pointer-events:none;animation:pulse-glow 5s ease-in-out infinite}
     .orb-1{top:15%;left:8%;width:480px;height:480px;background:radial-gradient(circle,rgba(138,77,255,.2) 0%,transparent 70%)}
     .orb-2{bottom:20%;right:8%;width:320px;height:320px;background:radial-gradient(circle,rgba(91,44,255,.15) 0%,transparent 70%);animation-delay:2s}
+    /* Elegant floating pill shapes */
+    .eleg-shape{
+      position:absolute;pointer-events:none;
+      border-radius:9999px;
+      border:2px solid rgba(255,255,255,.13);
+      backdrop-filter:blur(2px);
+      box-shadow:0 8px 32px rgba(255,255,255,.07);
+    }
+    .eleg-shape::after{
+      content:'';position:absolute;inset:0;border-radius:9999px;
+      background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.18),transparent 70%);
+    }
+    /* entrance: slide down from above */
+    @keyframes elegIn{
+      from{opacity:0;transform:var(--rot) translateY(-120px)}
+      to{opacity:1;transform:var(--rot) translateY(0)}
+    }
+    @keyframes elegFloat{
+      0%,100%{transform:var(--rot) translateY(0)}
+      50%{transform:var(--rot) translateY(15px)}
+    }
+    .eleg-shape{
+      animation:
+        elegIn 2.4s cubic-bezier(.23,.86,.39,.96) var(--delay,.3s) both,
+        elegFloat 12s ease-in-out calc(var(--delay,.3s) + 2.4s) infinite;
+    }
+    /* individual shapes */
+    .es1{--rot:rotate(12deg);--delay:.3s;
+      width:600px;height:140px;left:-10%;top:18%;
+      background:linear-gradient(to right,rgba(99,102,241,.15),transparent)}
+    .es2{--rot:rotate(-15deg);--delay:.5s;
+      width:500px;height:120px;right:-5%;top:68%;
+      background:linear-gradient(to right,rgba(244,63,94,.15),transparent)}
+    .es3{--rot:rotate(-8deg);--delay:.4s;
+      width:300px;height:80px;left:5%;bottom:8%;
+      background:linear-gradient(to right,rgba(139,92,246,.15),transparent)}
+    .es4{--rot:rotate(20deg);--delay:.6s;
+      width:200px;height:60px;right:18%;top:10%;
+      background:linear-gradient(to right,rgba(245,158,11,.15),transparent)}
+    .es5{--rot:rotate(-25deg);--delay:.7s;
+      width:150px;height:40px;left:24%;top:5%;
+      background:linear-gradient(to right,rgba(6,182,212,.15),transparent)}
     .orb-3{top:55%;left:55%;width:200px;height:200px;background:radial-gradient(circle,rgba(192,132,252,.1) 0%,transparent 70%);animation-delay:1s}
 
     /* Scroll cue */
@@ -895,6 +937,12 @@
   <div class="orb orb-1" id="orb1"></div>
   <div class="orb orb-2" id="orb2"></div>
   <div class="orb orb-3"></div>
+  <!-- Elegant floating shapes -->
+  <div class="eleg-shape es1"></div>
+  <div class="eleg-shape es2"></div>
+  <div class="eleg-shape es3"></div>
+  <div class="eleg-shape es4"></div>
+  <div class="eleg-shape es5"></div>
 
   <div class="hero-grid">
     <!-- Left -->
