@@ -572,6 +572,42 @@
     /* ── Testimonials ── */
     .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
     .testi-card{padding:28px 24px;border-radius:20px;border:1px solid rgba(255,255,255,.07);background:#111}
+    /* Animated testimonials layout */
+    .testi-animated{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+    @media(max-width:768px){.testi-animated{grid-template-columns:1fr;gap:40px}}
+    .testi-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 14px;border-radius:100px;background:rgba(138,77,255,.1);color:#8A4DFF;font-size:13px;font-weight:500;margin-bottom:24px}
+    .testi-dots{display:flex;gap:10px;align-items:center;margin-top:32px}
+    .testi-dot-btn{height:10px;border-radius:100px;border:none;cursor:pointer;transition:all .3s;background:rgba(255,255,255,.2)}
+    .testi-dot-btn.active{width:40px;background:#8A4DFF}
+    .testi-dot-btn:not(.active){width:10px}
+    .testi-stage{position:relative;min-height:320px}
+    .testi-slide{
+      position:absolute;inset:0;
+      background:#111;border:1px solid rgba(255,255,255,.08);
+      border-radius:20px;padding:32px;
+      display:flex;flex-direction:column;
+      opacity:0;transform:translateX(80px) scale(.97);
+      transition:opacity .5s ease,transform .5s ease;
+      pointer-events:none;
+    }
+    .testi-slide.active{opacity:1;transform:translateX(0) scale(1);pointer-events:auto}
+    .testi-slide-stars{display:flex;gap:4px;margin-bottom:20px}
+    .testi-slide-quote{flex:1;font-size:17px;line-height:1.7;font-weight:500;position:relative;padding-left:8px;margin-bottom:20px}
+    .testi-slide-quote::before{content:'\201C';position:absolute;left:-12px;top:-8px;font-size:64px;color:rgba(138,77,255,.18);line-height:1;font-family:Georgia,serif}
+    .testi-sep{height:1px;background:rgba(255,255,255,.08);margin-bottom:20px}
+    .testi-person{display:flex;align-items:center;gap:14px}
+    .testi-avatar{width:48px;height:48px;border-radius:50%;border:2px solid rgba(138,77,255,.3);overflow:hidden;background:rgba(138,77,255,.2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;color:#8A4DFF;flex-shrink:0}
+    .testi-avatar img{width:100%;height:100%;object-fit:cover}
+    .testi-name{font-weight:600;font-size:15px}
+    .testi-role-co{font-size:13px;color:rgba(255,255,255,.45);margin-top:2px}
+    /* decorative corners */
+    .testi-stage-wrap{position:relative;padding:6px}
+    .testi-stage-wrap::before,.testi-stage-wrap::after{
+      content:'';position:absolute;width:80px;height:80px;border-radius:14px;
+      background:rgba(138,77,255,.05);pointer-events:none
+    }
+    .testi-stage-wrap::before{bottom:-12px;left:-12px}
+    .testi-stage-wrap::after{top:-12px;right:-12px}
     .testi-stars{display:flex;gap:4px;margin-bottom:16px}
     .testi-text{font-size:14px;line-height:1.72;color:rgba(255,255,255,.45);margin-bottom:20px;font-style:italic}
     .testi-author{font-size:14px;font-weight:600}
@@ -1555,34 +1591,85 @@
 </section>
 
 <!-- ═══ TESTIMONIALS ═══ -->
-<section class="section-alt" style="padding:80px clamp(16px,5vw,56px)">
+<section id="testimonials" class="section-alt" style="padding:80px clamp(16px,5vw,56px)">
   <div class="section-inner">
-    <div class="fade-in" style="text-align:center">
-      <p class="section-label" style="text-align:center">Client Feedback</p>
-      <h2 class="section-title" style="text-align:center;margin-bottom:48px">What Clients Say</h2>
-    </div>
-    <div class="testi-grid">
-      <div class="testi-card fade-in">
-        <div class="testi-stars">
-          <svg width="14" height="14"><use href="#ico-star"/></svg><svg width="14" height="14"><use href="#ico-star"/></svg><svg width="14" height="14"><use href="#ico-star"/></svg><svg width="14" height="14"><use href="#ico-star"/></svg><svg width="14" height="14"><use href="#ico-star"/></svg>
+    <div class="testi-animated fade-in">
+
+      <!-- Left: heading + dots -->
+      <div>
+        <div class="testi-badge">
+          <svg width="13" height="13" fill="#8A4DFF" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Trusted by clients
         </div>
-        <p class="testi-text">"Crams delivered beyond expectations. The site looks stunning and actually converts — inquiries tripled in month one."</p>
-        <div><p class="testi-author">Client A</p><p class="testi-role">CEO, Architecture Firm</p></div>
+        <h2 class="section-title" style="margin-bottom:16px">What Clients Say</h2>
+        <p style="font-size:16px;line-height:1.7;color:rgba(255,255,255,.45);max-width:400px">Real results from real clients — here's what working with Crams Creative looks like.</p>
+        <div class="testi-dots" id="testiDots"></div>
       </div>
-      <div class="testi-card fade-in">
-        <div class="testi-stars">
-          <svg width="14" height="14"><use href="#ico-star"/></svg><svg width="14" height="14"><use href="#ico-star"/></svg><svg width="14" height="14"><use href="#ico-star"/></svg><svg width="14" height="14"><use href="#ico-star"/></svg><svg width="14" height="14"><use href="#ico-star"/></svg>
+
+      <!-- Right: sliding cards -->
+      <div class="testi-stage-wrap">
+        <div class="testi-stage" id="testiStage">
+
+          <div class="testi-slide active">
+            <div class="testi-slide-stars">
+              <svg width="16" height="16" fill="#EAB308" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" fill="#EAB308" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" fill="#EAB308" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" fill="#EAB308" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" fill="#EAB308" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="testi-slide-quote">Crams delivered beyond expectations. The site looks stunning and actually converts — inquiries tripled in month one.</p>
+            <div class="testi-sep"></div>
+            <div class="testi-person">
+              <div class="testi-avatar">A</div>
+              <div>
+                <div class="testi-name">Client A</div>
+                <div class="testi-role-co">CEO, Architecture Firm</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-slide">
+            <div class="testi-slide-stars">
+              <svg width="16" height="16" fill="#EAB308" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" fill="#EAB308" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" fill="#EAB308" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" fill="#EAB308" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" fill="#EAB308" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="testi-slide-quote">Clear communication, fast delivery, and the final product is exactly what we envisioned — plus more. Truly premium.</p>
+            <div class="testi-sep"></div>
+            <div class="testi-person">
+              <div class="testi-avatar">B</div>
+              <div>
+                <div class="testi-name">Client B</div>
+                <div class="testi-role-co">Founder, Travel Brand</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-slide">
+            <div class="testi-slide-stars">
+              <svg width="16" height="16" fill="#EAB308" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" fill="#EAB308" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" fill="#EAB308" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" fill="#EAB308" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" fill="#EAB308" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="testi-slide-quote">The attention to detail is unmatched. Every interaction, animation, and pixel felt intentional. Outstanding work.</p>
+            <div class="testi-sep"></div>
+            <div class="testi-person">
+              <div class="testi-avatar">C</div>
+              <div>
+                <div class="testi-name">Client C</div>
+                <div class="testi-role-co">Brand Director</div>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <p class="testi-text">"Clear communication, fast delivery, and the final product is exactly what we envisioned — plus more. Truly premium."</p>
-        <div><p class="testi-author">Client B</p><p class="testi-role">Founder, Travel Brand</p></div>
       </div>
-      <div class="testi-card fade-in">
-        <div class="testi-stars">
-          <svg width="14" height="14"><use href="#ico-star"/></svg><svg width="14" height="14"><use href="#ico-star"/></svg><svg width="14" height="14"><use href="#ico-star"/></svg><svg width="14" height="14"><use href="#ico-star"/></svg><svg width="14" height="14"><use href="#ico-star"/></svg>
-        </div>
-        <p class="testi-text">"The attention to detail is unmatched. Every interaction, animation, and pixel felt intentional. Outstanding work."</p>
-        <div><p class="testi-author">Client C</p><p class="testi-role">Brand Director</p></div>
-      </div>
+
     </div>
   </div>
 </section>
@@ -2064,6 +2151,45 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideo()
   img.addEventListener('error', function(){
     // Already handled inline (shows SVG fallback), keep text visible
   });
+})();
+
+// Animated testimonials
+(function(){
+  function initTestimonials(){
+    var slides = document.querySelectorAll('.testi-slide');
+    var dotsEl = document.getElementById('testiDots');
+    if(!slides.length || !dotsEl) return;
+    var current = 0;
+    var dots = [];
+
+    // Build dots
+    slides.forEach(function(_,i){
+      var btn = document.createElement('button');
+      btn.className = 'testi-dot-btn' + (i===0?' active':'');
+      btn.setAttribute('aria-label','View testimonial '+(i+1));
+      btn.addEventListener('click', function(){ goTo(i); resetTimer(); });
+      dotsEl.appendChild(btn);
+      dots.push(btn);
+    });
+
+    function goTo(n){
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    // Auto-rotate every 6s
+    var timer = setInterval(function(){ goTo(current+1); }, 6000);
+    function resetTimer(){ clearInterval(timer); timer = setInterval(function(){ goTo(current+1); }, 6000); }
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', initTestimonials);
+  } else {
+    initTestimonials();
+  }
 })();
 
 // Spotlight effect for service-card and skill-card
