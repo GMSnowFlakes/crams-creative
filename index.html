@@ -28,13 +28,16 @@
   <!-- ▸ FAVICON -->
   <link rel="icon" type="image/png" href="brand/favicon.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
   <link rel="dns-prefetch" href="https://fonts.gstatic.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- Non-blocking font load -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap"/></noscript>
   <link rel="alternate" hreflang="en" href="https://www.cramscreative.com/"/>
   <link rel="alternate" hreflang="x-default" href="https://www.cramscreative.com/"/>
-  <!-- Preload hero image -->
-  <link rel="preload" as="image" href="project-images/maison-luxe.jpg"/>
+  <!-- Preload LCP hero image -->
+  <link rel="preload" as="image" href="project-images/maison-luxe.jpg" fetchpriority="high"/>
   <!-- JSON-LD Schema -->
   <script type="application/ld+json">
   {
@@ -168,6 +171,16 @@
             "@type": "Question",
             "name": "Can you help with SEO and getting found on Google?",
             "acceptedAnswer": {"@type": "Answer", "text": "Yes. All sites come with solid on-page SEO foundations: semantic HTML, meta tags, structured data, fast load times, and mobile optimization. Dedicated SEO & Growth packages are also available for deeper strategy."}
+          },
+          {
+            "@type": "Question",
+            "name": "How much does a website cost in the Philippines?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Website costs in the Philippines vary widely. A simple landing page starts around ₱15,000–₱30,000 while a full business website ranges from ₱30,000–₱100,000+. Crams Creative offers transparent, competitive pricing — send your project details for a free quote within 24 hours."}
+          },
+          {
+            "@type": "Question",
+            "name": "Do you work with international clients outside the Philippines?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. While based in the Philippines, Crams Creative regularly works with clients in the US, Australia, UK, and across Asia. All projects are handled remotely with fast communication across time zones."}
           }
         ]
       }
@@ -1624,6 +1637,20 @@
           <span class="faq-icon">+</span>
         </button>
         <p class="faq-a">Yes. All sites come with solid on-page SEO foundations: semantic HTML, meta tags, structured data, fast load times, and mobile optimisation. I also offer dedicated SEO & Growth packages for deeper strategy.</p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How much does a website cost in the Philippines?
+          <span class="faq-icon">+</span>
+        </button>
+        <p class="faq-a">Website costs in the Philippines vary widely. A simple landing page starts around ₱15,000–₱30,000 while a full business website ranges from ₱30,000–₱100,000+. Crams Creative offers transparent, competitive pricing — send your project details for a free quote within 24 hours.</p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Do you work with international clients outside the Philippines?
+          <span class="faq-icon">+</span>
+        </button>
+        <p class="faq-a">Absolutely. While based in the Philippines, Crams Creative regularly works with clients in the US, Australia, UK, and across Asia. All projects are handled remotely with fast communication across time zones.</p>
       </div>
     </div>
 
