@@ -673,7 +673,7 @@
     .footer-link:hover{color:#8A4DFF}
 
     /* ── Apps Section ── */
-    .apps-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:900px}
+    .apps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1200px}
     .app-card{
       border-radius:24px;overflow:hidden;
       border:1px solid rgba(138,77,255,.2);background:#111;
@@ -729,6 +729,7 @@
     }
     .modal-close:hover{background:rgba(138,77,255,.8)}
 
+    @media(max-width:900px){.apps-grid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:600px){.apps-grid{grid-template-columns:1fr}}
 
     /* ── CRO: Sticky bar ── */
@@ -1363,6 +1364,28 @@
             <span class="app-tag">CSS</span>
             <span class="app-tag">JavaScript</span>
             <span class="app-tag">POS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="app-card" onclick="openVideo('app-videos/inventory-system-demo.mp4','Inventory System — Smart Stock Management')">
+        <div class="app-video-thumb">
+          <video src="app-videos/inventory-system-demo.mp4" muted preload="none"></video>
+          <div class="app-play-btn">
+            <div class="app-play-circle">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="app-info">
+          <span class="app-badge">Inventory System</span>
+          <h3 class="app-title">Inventory System</h3>
+          <p class="app-desc">A smart stock management system with real-time tracking, low-stock alerts, and automated reorder ranking — built for businesses that need full visibility over their inventory.</p>
+          <div class="app-tags">
+            <span class="app-tag">HTML</span>
+            <span class="app-tag">CSS</span>
+            <span class="app-tag">JavaScript</span>
+            <span class="app-tag">Inventory</span>
           </div>
         </div>
       </div>
