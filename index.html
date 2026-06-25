@@ -327,20 +327,60 @@
     .stat-num{font-size:clamp(20px,2.5vw,28px);font-weight:700;color:#8A4DFF}
     .stat-lbl{font-size:11px;color:rgba(255,255,255,.4);margin-top:3px;letter-spacing:.04em}
 
-    /* Floating cards */
-    .hero-cards{position:relative;height:520px}
+    /* Browser window cards */
+    .hero-cards{position:relative;height:540px}
     .hero-card{
-      position:absolute;border-radius:16px;overflow:hidden;
-      border:1px solid rgba(138,77,255,.25);
-      box-shadow:0 24px 60px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.06);
-      cursor:pointer;transition:transform 1s ease
+      position:absolute;border-radius:10px;overflow:hidden;
+      border:1px solid rgba(138,77,255,.28);
+      background:#100d1e;
+      box-shadow:0 20px 60px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.04);
+      cursor:pointer;
+      transition:transform .3s ease,box-shadow .3s ease,z-index 0s
     }
-    .hero-card-inner{padding-bottom:65%;position:relative}
-    .hero-card-inner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-    .hero-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88),rgba(0,0,0,.05))}
-    .hero-card-info{position:absolute;bottom:14px;left:14px}
-    .hero-card-num{font-size:10px;color:#8A4DFF;letter-spacing:.2em;font-weight:600;margin-bottom:3px}
-    .hero-card-name{font-size:17px;font-weight:700;color:#fff}
+    .hero-card:hover{
+      transform:translateY(-8px) scale(1.03) !important;
+      box-shadow:0 32px 80px rgba(138,77,255,.35),0 0 0 1px rgba(138,77,255,.3);
+      z-index:10 !important
+    }
+    /* Browser chrome bar */
+    .browser-bar{
+      height:28px;background:#1b1530;
+      border-bottom:1px solid rgba(138,77,255,.14);
+      display:flex;align-items:center;padding:0 10px;gap:8px;flex-shrink:0
+    }
+    .browser-dots{display:flex;align-items:center;gap:4px;flex-shrink:0}
+    .bd{width:7px;height:7px;border-radius:50%}
+    .bd-r{background:#FF5F57}.bd-y{background:#FEBC2E}.bd-g{background:#28C840}
+    .browser-url{
+      flex:1;height:15px;
+      background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.07);
+      border-radius:4px;display:flex;align-items:center;
+      padding:0 8px;font-size:9px;font-family:monospace;
+      color:rgba(255,255,255,.32);letter-spacing:.02em;
+      white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+    }
+    /* Screenshot */
+    .browser-body{position:relative;overflow:hidden;height:0;padding-bottom:58%}
+    .browser-body img{
+      position:absolute;inset:0;width:100%;height:100%;
+      object-fit:cover;object-position:top;
+      transition:transform .6s ease
+    }
+    .hero-card:hover .browser-body img{transform:scale(1.06)}
+    /* Label strip */
+    .browser-label{
+      padding:7px 12px;
+      background:#100d1e;
+      border-top:1px solid rgba(138,77,255,.12);
+      display:flex;align-items:center;justify-content:space-between
+    }
+    .browser-label-name{
+      font-size:10px;font-weight:700;letter-spacing:.12em;
+      color:rgba(255,255,255,.82)
+    }
+    .browser-label-num{
+      font-size:9px;font-weight:600;letter-spacing:.15em;color:#8A4DFF
+    }
     .drag-hint{position:absolute;bottom:4px;right:0;display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.2)}
     .drag-hint-line{width:20px;height:1px;background:rgba(138,77,255,.4)}
     .drag-hint-txt{font-size:9px;letter-spacing:.22em}
@@ -1029,65 +1069,60 @@
 
     <!-- Floating cards -->
     <div class="hero-cards" id="heroCards">
-      <div class="hero-card" id="hc0" style="left:2%;top:5%;width:50%;z-index:5;animation:float-y 7s ease-in-out infinite">
-        <div class="hero-card-inner">
-          <img src="project-images/maison-luxe.jpg" alt="Maison Luxe" loading="lazy"/>
-          <div class="hero-card-overlay"></div>
-          <div class="hero-card-info"><div class="hero-card-num">01</div><div class="hero-card-name">MAISON LUXE</div></div>
+
+      <!-- Card 1 — Maison Luxe: top-left -->
+      <div class="hero-card" id="hc0" style="left:1%;top:0%;width:47%;z-index:5;animation:float-y 7s ease-in-out infinite">
+        <div class="browser-bar">
+          <div class="browser-dots"><span class="bd bd-r"></span><span class="bd bd-y"></span><span class="bd bd-g"></span></div>
+          <div class="browser-url">cramscreative.com/work/maison-luxe</div>
         </div>
+        <div class="browser-body"><img src="project-images/maison-luxe.jpg" alt="Maison Luxe" loading="eager"/></div>
+        <div class="browser-label"><span class="browser-label-name">MAISON LUXE</span><span class="browser-label-num">01</span></div>
       </div>
-      <div class="hero-card" id="hc1" style="left:38%;top:0%;width:42%;z-index:4;animation:float-y 7s ease-in-out 1s infinite">
-        <div class="hero-card-inner">
-          <img src="project-images/pickleball-hub.jpg" alt="Pickleball Hub" loading="lazy"/>
-          <div class="hero-card-overlay"></div>
-          <div class="hero-card-info"><div class="hero-card-num">02</div><div class="hero-card-name">PICKLEBALL HUB</div></div>
+
+      <!-- Card 2 — Pickleball Hub: top-right -->
+      <div class="hero-card" id="hc1" style="left:42%;top:3%;width:40%;z-index:4;animation:float-y 7s ease-in-out 1.1s infinite">
+        <div class="browser-bar">
+          <div class="browser-dots"><span class="bd bd-r"></span><span class="bd bd-y"></span><span class="bd bd-g"></span></div>
+          <div class="browser-url">cramscreative.com/work/pickleball-hub</div>
         </div>
+        <div class="browser-body"><img src="project-images/pickleball-hub.jpg" alt="Pickleball Hub" loading="lazy"/></div>
+        <div class="browser-label"><span class="browser-label-name">PICKLEBALL HUB</span><span class="browser-label-num">02</span></div>
       </div>
-      <div class="hero-card" id="hc2" style="left:50%;top:30%;width:40%;z-index:3;animation:float-y 7s ease-in-out 1.7s infinite">
-        <div class="hero-card-inner">
-          <img src="project-images/titan-construction.jpg" alt="Titan Construction" loading="lazy"/>
-          <div class="hero-card-overlay"></div>
-          <div class="hero-card-info"><div class="hero-card-num">03</div><div class="hero-card-name">TITAN CONSTRUCTION</div></div>
+
+      <!-- Card 3 — La Tavola: mid-left -->
+      <div class="hero-card" id="hc3" style="left:3%;top:46%;width:44%;z-index:3;animation:float-y 7s ease-in-out 2.2s infinite">
+        <div class="browser-bar">
+          <div class="browser-dots"><span class="bd bd-r"></span><span class="bd bd-y"></span><span class="bd bd-g"></span></div>
+          <div class="browser-url">cramscreative.com/work/la-tavola</div>
         </div>
+        <div class="browser-body"><img src="project-images/la-tavola-restaurant.jpg" alt="La Tavola" loading="lazy"/></div>
+        <div class="browser-label"><span class="browser-label-name">LA TAVOLA</span><span class="browser-label-num">03</span></div>
       </div>
-      <div class="hero-card" id="hc3" style="left:4%;top:48%;width:46%;z-index:2;animation:float-y 7s ease-in-out 2.4s infinite">
-        <div class="hero-card-inner">
-          <img src="project-images/la-tavola-restaurant.jpg" alt="La Tavola" loading="lazy"/>
-          <div class="hero-card-overlay"></div>
-          <div class="hero-card-info"><div class="hero-card-num">04</div><div class="hero-card-name">LA TAVOLA</div></div>
+
+      <!-- Card 4 — Titan Construction: mid-right -->
+      <div class="hero-card" id="hc2" style="left:44%;top:40%;width:41%;z-index:2;animation:float-y 7s ease-in-out 1.6s infinite">
+        <div class="browser-bar">
+          <div class="browser-dots"><span class="bd bd-r"></span><span class="bd bd-y"></span><span class="bd bd-g"></span></div>
+          <div class="browser-url">cramscreative.com/work/titan-construction</div>
         </div>
+        <div class="browser-body"><img src="project-images/titan-construction.jpg" alt="Titan Construction" loading="lazy"/></div>
+        <div class="browser-label"><span class="browser-label-name">TITAN CONSTRUCTION</span><span class="browser-label-num">04</span></div>
       </div>
-      <div class="hero-card" id="hc4" style="left:32%;top:54%;width:40%;z-index:1;animation:float-y 7s ease-in-out 3.1s infinite">
-        <div class="hero-card-inner">
-          <img src="project-images/pulse-ai-service.jpg" alt="Pulse AI" loading="lazy"/>
-          <div class="hero-card-overlay"></div>
-          <div class="hero-card-info"><div class="hero-card-num">05</div><div class="hero-card-name">PULSE AI</div></div>
+
+      <!-- Card 5 — Pulse AI: bottom-center -->
+      <div class="hero-card" id="hc4" style="left:21%;top:73%;width:41%;z-index:1;animation:float-y 7s ease-in-out 2.9s infinite">
+        <div class="browser-bar">
+          <div class="browser-dots"><span class="bd bd-r"></span><span class="bd bd-y"></span><span class="bd bd-g"></span></div>
+          <div class="browser-url">cramscreative.com/work/pulse-ai</div>
         </div>
+        <div class="browser-body"><img src="project-images/pulse-ai-service.jpg" alt="Pulse AI" loading="lazy"/></div>
+        <div class="browser-label"><span class="browser-label-name">PULSE AI</span><span class="browser-label-num">05</span></div>
       </div>
-      <div class="hero-card" id="hc5" style="left:60%;top:72%;width:34%;z-index:0;animation:float-y 7s ease-in-out 3.8s infinite">
-        <div class="hero-card-inner">
-          <img src="app-videos/thumbnails/invoicer-thumb.jpg" alt="Invoicer App" loading="lazy"/>
-          <div class="hero-card-overlay"></div>
-          <div class="hero-card-info"><div class="hero-card-num">06</div><div class="hero-card-name">INVOICER</div></div>
-        </div>
-      </div>
-      <div class="hero-card" id="hc6" style="left:3%;top:80%;width:35%;z-index:0;animation:float-y 7s ease-in-out 4.5s infinite">
-        <div class="hero-card-inner">
-          <img src="app-videos/thumbnails/pickleball-hub-thumb.jpg" alt="Pickleball Hub POS" loading="lazy"/>
-          <div class="hero-card-overlay"></div>
-          <div class="hero-card-info"><div class="hero-card-num">07</div><div class="hero-card-name">HUB POS</div></div>
-        </div>
-      </div>
-      <div class="hero-card" id="hc7" style="left:34%;top:84%;width:33%;z-index:0;animation:float-y 7s ease-in-out 5.2s infinite">
-        <div class="hero-card-inner">
-          <img src="app-videos/thumbnails/inventory-system-thumb.jpg" alt="Inventory System" loading="lazy"/>
-          <div class="hero-card-overlay"></div>
-          <div class="hero-card-info"><div class="hero-card-num">08</div><div class="hero-card-name">INVENTORY</div></div>
-        </div>
-      </div>
+
       <div class="drag-hint">
         <span class="drag-hint-line"></span>
-        <span class="drag-hint-txt">MOVE CURSOR TO EXPLORE</span>
+        <span class="drag-hint-txt">HOVER TO EXPLORE</span>
       </div>
     </div>
   </div>
