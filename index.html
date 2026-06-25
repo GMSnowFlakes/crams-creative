@@ -336,7 +336,7 @@
     .stat-lbl{font-size:11px;color:rgba(255,255,255,.65);margin-top:3px;letter-spacing:.04em}
 
     /* Gradient project cards — image-free, CSS-only */
-    .hero-cards{position:relative;height:840px}
+    .hero-cards{position:relative;height:760px}
     .hc{
       position:absolute;border-radius:20px;overflow:hidden;
       border:1px solid rgba(255,255,255,.1);
@@ -2366,32 +2366,17 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideo()
         'linear-gradient(140deg,#052818 0%,#065f3f 55%,#34d399 100%)',
         'linear-gradient(140deg,#1a0a04 0%,#9a3412 55%,#f97316 100%)',
       ];
-      const appGrads = [
-        'linear-gradient(140deg,#061b2b 0%,#0e4f6e 55%,#06b6d4 100%)',
-        'linear-gradient(140deg,#0f0c2e 0%,#3730a3 55%,#818cf8 100%)',
-        'linear-gradient(140deg,#1a0e14 0%,#831843 55%,#ec4899 100%)',
-        'linear-gradient(140deg,#1a1203 0%,#713f12 55%,#d97706 100%)',
-      ];
-
       /* Website slots: 2 cols × 3 rows */
       const webSlots = [
-        {left:'1%', top:'1%',  width:'45%',height:'24%',z:9, delay:0  },
-        {left:'50%',top:'0%',  width:'44%',height:'24%',z:8, delay:1.1},
-        {left:'2%', top:'26%', width:'45%',height:'24%',z:7, delay:2.2},
-        {left:'49%',top:'25%', width:'44%',height:'24%',z:6, delay:1.6},
-        {left:'1%', top:'51%', width:'45%',height:'24%',z:5, delay:2.9},
-        {left:'50%',top:'50%', width:'44%',height:'24%',z:4, delay:3.5},
-      ];
-      /* App slots: bottom row of 3 (+ room for a 4th future app) */
-      const appSlots = [
-        {left:'2%', top:'76%', width:'29%',height:'22%',z:3, delay:4.2},
-        {left:'34%',top:'77%', width:'29%',height:'22%',z:2, delay:5.0},
-        {left:'67%',top:'76%', width:'28%',height:'22%',z:1, delay:5.8},
-        {left:'2%', top:'100%',width:'90%',height:'22%',z:1, delay:6.5},
+        {left:'1%', top:'1%',  width:'45%',height:'32%',z:6, delay:0  },
+        {left:'50%',top:'0%',  width:'44%',height:'32%',z:5, delay:1.1},
+        {left:'2%', top:'34%', width:'45%',height:'32%',z:4, delay:2.2},
+        {left:'49%',top:'33%', width:'44%',height:'32%',z:3, delay:1.6},
+        {left:'1%', top:'67%', width:'45%',height:'32%',z:2, delay:2.9},
+        {left:'50%',top:'66%', width:'44%',height:'32%',z:1, delay:3.5},
       ];
 
       const maxWeb = Math.min(webCards.length, webSlots.length);
-      const maxApp = Math.min(appCards.length, appSlots.length);
       let html = '';
 
       for (let i = 0; i < maxWeb; i++) {
@@ -2399,13 +2384,6 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideo()
         const name = c.dataset.heroName || c.querySelector('.proj-title')?.textContent.trim() || 'Project';
         const cat  = c.dataset.heroCat  || c.querySelector('.proj-badge')?.textContent.trim() || 'Website';
         const num  = String(i + 1).padStart(2, '0');
-        html += `<div class="hc" style="left:${s.left};top:${s.top};width:${s.width};height:${s.height};z-index:${s.z};animation:float-y 7s ease-in-out ${s.delay}s infinite"><div class="hc-bg" style="background:${g}"></div><div class="hc-shine"></div><div class="hc-dots"></div><span class="hc-num">${num}</span><p class="hc-cat">${cat}</p><h3 class="hc-title">${name}</h3></div>`;
-      }
-      for (let i = 0; i < maxApp; i++) {
-        const c = appCards[i], s = appSlots[i], g = appGrads[i % appGrads.length];
-        const name = c.dataset.heroName || c.querySelector('.app-title')?.textContent.trim() || 'App';
-        const cat  = c.dataset.heroCat  || 'App';
-        const num  = String(maxWeb + i + 1).padStart(2, '0');
         html += `<div class="hc" style="left:${s.left};top:${s.top};width:${s.width};height:${s.height};z-index:${s.z};animation:float-y 7s ease-in-out ${s.delay}s infinite"><div class="hc-bg" style="background:${g}"></div><div class="hc-shine"></div><div class="hc-dots"></div><span class="hc-num">${num}</span><p class="hc-cat">${cat}</p><h3 class="hc-title">${name}</h3></div>`;
       }
 
