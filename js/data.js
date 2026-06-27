@@ -150,6 +150,28 @@ const PROJECTS = [
 
 const APPS = [
   {
+    heroName: 'Invoicer',
+    heroCat: 'Finance App',
+    videoSrc: 'app-videos/invoicer-demo.mp4',
+    poster: 'app-videos/thumbnails/invoicer-thumb.jpg',
+    videoTitle: 'Invoicer — Invoice Management App',
+    badgeLabel: 'Invoice App',
+    title: 'Invoicer',
+    desc: 'A clean invoicing tool for freelancers and small businesses — create, manage, and send professional invoices fast.',
+    tags: ['HTML', 'CSS', 'JavaScript', 'PDF Export'],
+  },
+  {
+    heroName: 'Hub POS',
+    heroCat: 'Point of Sale',
+    videoSrc: 'app-videos/pickleball-hub-demo.mp4',
+    poster: 'app-videos/thumbnails/pickleball-hub-thumb.jpg',
+    videoTitle: 'Pickleball Hub POS — Point of Sale System',
+    badgeLabel: 'POS System',
+    title: 'Pickleball Hub POS',
+    desc: 'A point-of-sale system built for Pickleball Hub — handles memberships, equipment rental, and session bookings in real time.',
+    tags: ['HTML', 'CSS', 'JavaScript', 'POS'],
+  },
+  {
     heroName: 'ClinicOS',
     heroCat: 'Clinic Management',
     videoSrc: 'app-videos/ClinicOS-Demo.mp4',
