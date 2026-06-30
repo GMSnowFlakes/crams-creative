@@ -875,7 +875,7 @@
     body.light .process-timeline-step{background:#fff;border-color:rgba(0,0,0,.08)}
     body.light .process-timeline-title{color:#111}
     body.light .process-timeline-desc{color:rgba(0,0,0,.55)}
-    body.light #hero-card > div:first-child{background:#fff;border-color:rgba(0,0,0,.08)}
+    body.light #hero-card .hero-slide > div:first-child{background:#fff;border-color:rgba(0,0,0,.08)}
     body.light #hero-card h3{color:#111}
     body.light #hero-card p{color:rgba(0,0,0,.5)}
     body.light #hero-stat-p,body.light #hero-stat-a{color:var(--accent)}
@@ -1077,98 +1077,9 @@
       </div>
     </div>
 
-    <!-- Right: Cycling project showcase -->
+    <!-- Right: Cycling project showcase (auto-populated from data.js) -->
     <div id="hero-card" style="opacity:0;transform:translateY(40px);transition:opacity .8s ease .6s,transform .8s cubic-bezier(.16,1,.3,1) .6s;position:relative;height:420px;overflow:hidden">
-      <!-- Card 1: Maison Luxe -->
-      <div class="hero-slide active" data-slide="0" style="position:absolute;inset:0;transition:opacity .6s ease,transform .6s cubic-bezier(.16,1,.3,1);opacity:1;transform:translateY(0) scale(1)">
-        <div style="position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--border);box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(99,102,241,.1);height:100%">
-          <img src="project-images/maison-luxe.jpg" alt="Maison Luxe" style="width:100%;height:100%;object-fit:cover" loading="lazy"/>
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(9,11,15,.92) 0%,rgba(9,11,15,.2) 40%,transparent 60%)"></div>
-          <div style="position:absolute;bottom:0;left:0;right:0;padding:28px">
-            <div style="display:flex;gap:6px;margin-bottom:12px">
-              <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(99,102,241,.15);color:var(--accent);font-weight:600">E-Commerce</span>
-              <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,.08);color:var(--text-2);font-weight:600">Branding</span>
-            </div>
-            <h3 style="font-size:20px;font-weight:700;margin-bottom:4px">Maison Luxe</h3>
-            <p style="font-size:12px;color:var(--text-3)">Luxury jewelry &amp; bags e-commerce platform</p>
-          </div>
-        </div>
-      </div>
-      <!-- Card 2: Pickleball Hub -->
-      <div class="hero-slide" data-slide="1" style="position:absolute;inset:0;transition:opacity .6s ease,transform .6s cubic-bezier(.16,1,.3,1);opacity:0;transform:translateY(20px) scale(.97)">
-        <div style="position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--border);box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(99,102,241,.1);height:100%">
-          <img src="project-images/pickleball-hub.jpg" alt="Pickleball Hub" style="width:100%;height:100%;object-fit:cover" loading="lazy"/>
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(9,11,15,.92) 0%,rgba(9,11,15,.2) 40%,transparent 60%)"></div>
-          <div style="position:absolute;bottom:0;left:0;right:0;padding:28px">
-            <div style="display:flex;gap:6px;margin-bottom:12px">
-              <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(99,102,241,.15);color:var(--accent);font-weight:600">Sports</span>
-              <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,.08);color:var(--text-2);font-weight:600">Community</span>
-            </div>
-            <h3 style="font-size:20px;font-weight:700;margin-bottom:4px">Pickleball Hub</h3>
-            <p style="font-size:12px;color:var(--text-3)">Sports community platform &amp; events</p>
-          </div>
-        </div>
-      </div>
-      <!-- Card 3: Titan Construction -->
-      <div class="hero-slide" data-slide="2" style="position:absolute;inset:0;transition:opacity .6s ease,transform .6s cubic-bezier(.16,1,.3,1);opacity:0;transform:translateY(20px) scale(.97)">
-        <div style="position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--border);box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(99,102,241,.1);height:100%">
-          <img src="project-images/titan-construction.jpg" alt="Titan Construction" style="width:100%;height:100%;object-fit:cover" loading="lazy"/>
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(9,11,15,.92) 0%,rgba(9,11,15,.2) 40%,transparent 60%)"></div>
-          <div style="position:absolute;bottom:0;left:0;right:0;padding:28px">
-            <div style="display:flex;gap:6px;margin-bottom:12px">
-              <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(99,102,241,.15);color:var(--accent);font-weight:600">Corporate</span>
-              <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,.08);color:var(--text-2);font-weight:600">Web Dev</span>
-            </div>
-            <h3 style="font-size:20px;font-weight:700;margin-bottom:4px">Titan Construction</h3>
-            <p style="font-size:12px;color:var(--text-3)">Corporate website &amp; project showcase</p>
-          </div>
-        </div>
-      </div>
-      <!-- Card 4: La Tavola -->
-      <div class="hero-slide" data-slide="3" style="position:absolute;inset:0;transition:opacity .6s ease,transform .6s cubic-bezier(.16,1,.3,1);opacity:0;transform:translateY(20px) scale(.97)">
-        <div style="position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--border);box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(99,102,241,.1);height:100%">
-          <img src="project-images/la-tavola-restaurant.jpg" alt="La Tavola" style="width:100%;height:100%;object-fit:cover" loading="lazy"/>
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(9,11,15,.92) 0%,rgba(9,11,15,.2) 40%,transparent 60%)"></div>
-          <div style="position:absolute;bottom:0;left:0;right:0;padding:28px">
-            <div style="display:flex;gap:6px;margin-bottom:12px">
-              <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(99,102,241,.15);color:var(--accent);font-weight:600">Restaurant</span>
-              <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,.08);color:var(--text-2);font-weight:600">Landing</span>
-            </div>
-            <h3 style="font-size:20px;font-weight:700;margin-bottom:4px">La Tavola</h3>
-            <p style="font-size:12px;color:var(--text-3)">Fine dining &amp; reservation system</p>
-          </div>
-        </div>
-      </div>
-      <!-- Card 5: Animated Web -->
-      <div class="hero-slide" data-slide="4" style="position:absolute;inset:0;transition:opacity .6s ease,transform .6s cubic-bezier(.16,1,.3,1);opacity:0;transform:translateY(20px) scale(.97)">
-        <div style="position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--border);box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(99,102,241,.1);height:100%">
-          <img src="project-images/animated-website.jpg" alt="Animated Website" style="width:100%;height:100%;object-fit:cover" loading="lazy"/>
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(9,11,15,.92) 0%,rgba(9,11,15,.2) 40%,transparent 60%)"></div>
-          <div style="position:absolute;bottom:0;left:0;right:0;padding:28px">
-            <div style="display:flex;gap:6px;margin-bottom:12px">
-              <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(99,102,241,.15);color:var(--accent);font-weight:600">Interactive</span>
-              <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,.08);color:var(--text-2);font-weight:600">Animation</span>
-            </div>
-            <h3 style="font-size:20px;font-weight:700;margin-bottom:4px">Animated Web</h3>
-            <p style="font-size:12px;color:var(--text-3)">Motion-first interactive experience</p>
-          </div>
-        </div>
-      </div>
-      <!-- Card 6: Pulse AI -->
-      <div class="hero-slide" data-slide="5" style="position:absolute;inset:0;transition:opacity .6s ease,transform .6s cubic-bezier(.16,1,.3,1);opacity:0;transform:translateY(20px) scale(.97)">
-        <div style="position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--border);box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(99,102,241,.1);height:100%">
-          <img src="project-images/pulse-ai-service.jpg" alt="Pulse AI" style="width:100%;height:100%;object-fit:cover" loading="lazy"/>
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(9,11,15,.92) 0%,rgba(9,11,15,.2) 40%,transparent 60%)"></div>
-          <div style="position:absolute;bottom:0;left:0;right:0;padding:28px">
-            <div style="display:flex;gap:6px;margin-bottom:12px">
-              <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(99,102,241,.15);color:var(--accent);font-weight:600">SaaS</span>
-              <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,.08);color:var(--text-2);font-weight:600">AI</span>
-            </div>
-            <h3 style="font-size:20px;font-weight:700;margin-bottom:4px">Pulse AI</h3>
-            <p style="font-size:12px;color:var(--text-3)">AI-powered services landing page</p>
-          </div>
-        </div>
-      </div>
+      <div id="hero-slides"></div>
       <!-- Stat badges -->
       <div style="position:absolute;top:-12px;right:-12px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 16px;box-shadow:0 8px 30px rgba(0,0,0,.4);z-index:2">
         <div style="font-size:22px;font-weight:700;color:var(--accent);line-height:1" id="hero-stat-p">—</div>
@@ -1183,14 +1094,11 @@
 </section>
 
 <script>
-/* Hero kinetic text reveal + cycling showcase */
+/* Hero kinetic text reveal */
 (function(){
   var words=document.querySelectorAll('.hero-word');
   var line=document.getElementById('hero-line');
   var card=document.getElementById('hero-card');
-  var slides=document.querySelectorAll('.hero-slide');
-  var current=0;
-  var total=slides.length;
 
   /* Animate words */
   setTimeout(function(){
@@ -1204,29 +1112,6 @@
     if(line) setTimeout(function(){line.style.width='80px';},words.length*80+200);
     if(card) card.style.opacity='1',card.style.transform='translateY(0)';
   },300);
-
-  /* Cycle through slides */
-  function cycleSlide(){
-    var next=(current+1)%total;
-    slides[current].style.opacity='0';
-    slides[current].style.transform='translateY(-20px) scale(.97)';
-    slides[next].style.opacity='1';
-    slides[next].style.transform='translateY(0) scale(1)';
-    current=next;
-  }
-  setInterval(cycleSlide,3500);
-
-  /* Update hero card stats */
-  setTimeout(function(){
-    try{
-      var p=document.querySelectorAll('#projectsGrid .project-card').length||0;
-      var a=document.querySelectorAll('.apps-grid .app-card').length||0;
-      var hp=document.getElementById('hero-stat-p');
-      var ha=document.getElementById('hero-stat-a');
-      if(hp&&p>0)hp.textContent=p+'+';
-      if(ha&&a>0)ha.textContent=a;
-    }catch(e){}
-  },1500);
 })();
 </script>
 
@@ -2005,6 +1890,59 @@ function updateStats(){
 document.addEventListener('DOMContentLoaded',function(){setTimeout(updateStats,1500)});
 </script>
 <script src="js/data.js"></script>
+<script>
+/* Build hero showcase dynamically from PROJECTS data */
+(function(){
+  var container=document.getElementById('hero-slides');
+  if(!container||typeof PROJECTS==='undefined')return;
+  var html='';
+  PROJECTS.forEach(function(p,i){
+    var style=i===0
+      ?'position:absolute;inset:0;transition:opacity .6s ease,transform .6s cubic-bezier(.16,1,.3,1);opacity:1;transform:translateY(0) scale(1)'
+      :'position:absolute;inset:0;transition:opacity .6s ease,transform .6s cubic-bezier(.16,1,.3,1);opacity:0;transform:translateY(20px) scale(.97)';
+    var cat1=p.badge?stripHtml(p.badge.label):'';
+    var cat2=p.projTags&&p.projTags[0]?stripHtml(p.projTags[0]):'';
+    html+='<div class="hero-slide" data-slide="'+i+'" style="'+style+'">'
+      +'<div style="position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--border);box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(99,102,241,.1);height:100%">'
+      +'<img src="'+p.img+'" alt="'+stripHtml(p.imgAlt||p.title)+'" style="width:100%;height:100%;object-fit:cover" loading="lazy"/>'
+      +'<div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(9,11,15,.92) 0%,rgba(9,11,15,.2) 40%,transparent 60%)"></div>'
+      +'<div style="position:absolute;bottom:0;left:0;right:0;padding:28px">'
+      +'<div style="display:flex;gap:6px;margin-bottom:12px">'
+      +'<span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(99,102,241,.15);color:var(--accent);font-weight:600">'+cat1+'</span>'
+      +'<span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,.08);color:var(--text-2);font-weight:600">'+cat2+'</span>'
+      +'</div>'
+      +'<h3 style="font-size:20px;font-weight:700;margin-bottom:4px">'+stripHtml(p.title)+'</h3>'
+      +'<p style="font-size:12px;color:var(--text-3)">'+stripHtml(p.subtitle||p.heroCat)+'</p>'
+      +'</div></div></div>';
+  });
+  container.innerHTML=html;
+  function stripHtml(s){return String(s).replace(/&amp;/g,'&').replace(/<[^>]+>/g,'');}
+
+  /* Start cycling after slides are rendered */
+  var slides=document.querySelectorAll('.hero-slide');
+  var current=0;
+  var total=slides.length;
+  function cycleSlide(){
+    var next=(current+1)%total;
+    slides[current].style.opacity='0';
+    slides[current].style.transform='translateY(-20px) scale(.97)';
+    slides[next].style.opacity='1';
+    slides[next].style.transform='translateY(0) scale(1)';
+    current=next;
+  }
+  if(total>1) setInterval(cycleSlide,3500);
+
+  /* Update hero stat badges */
+  setTimeout(function(){
+    try{
+      var hp=document.getElementById('hero-stat-p');
+      var ha=document.getElementById('hero-stat-a');
+      if(hp&&PROJECTS.length>0) hp.textContent=PROJECTS.length+'+';
+      if(ha&&typeof APPS!=='undefined'&&APPS.length>0) ha.textContent=APPS.length;
+    }catch(e){}
+  },500);
+})();
+</script>
 <script src="js/render.js"></script>
 </body>
 </html>
