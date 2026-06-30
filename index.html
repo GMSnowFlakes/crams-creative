@@ -745,11 +745,6 @@
       font-size:16px;color:var(--accent);transition:transform .3s,background .25s
     }
     .faq-item.open .faq-icon{transform:rotate(45deg);background:rgba(99,102,241,.25)}
-    .faq-a{
-      display:none;padding:0 22px 20px;
-      font-size:14px;line-height:1.72;color:rgba(255,255,255,.5)
-    }
-    .faq-item.open .faq-a{display:block}
 
     /* ── CRO: Trust strip ── */
     .trust-strip{
@@ -917,6 +912,65 @@
       .about-vals{grid-template-columns:1fr}
       .form-grid{grid-template-columns:1fr}
     }
+
+    /* ── FAQ smooth height ── */
+    .faq-a-wrap{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.16,1,.3,1),padding .35s ease}
+    .faq-item.open .faq-a-wrap{max-height:300px}
+    .faq-item .faq-a{padding:0 22px 0;font-size:14px;line-height:1.72;color:rgba(255,255,255,.5)}
+    .faq-item.open .faq-a{padding:0 22px 20px}
+
+    /* ── Mobile hamburger animation ── */
+    #mobile-toggle .bar{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s cubic-bezier(.16,1,.3,1)}
+    #mobile-toggle .bar+.bar{margin-top:5px}
+    #mobile-toggle.open .bar:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+    #mobile-toggle.open .bar:nth-child(2){opacity:0;transform:scaleX(0)}
+    #mobile-toggle.open .bar:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+    /* ── Scroll-to-top ── */
+    #scroll-top{
+      position:fixed;bottom:28px;right:28px;z-index:900;
+      width:44px;height:44px;border-radius:50%;border:1px solid var(--border);
+      background:var(--surface);color:var(--accent);cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+      opacity:0;transform:translateY(20px);transition:all .3s ease;
+      box-shadow:0 8px 30px rgba(0,0,0,.3);backdrop-filter:blur(12px)
+    }
+    #scroll-top.visible{opacity:1;transform:translateY(0)}
+    #scroll-top:hover{background:var(--accent);color:#fff;border-color:var(--accent);transform:translateY(-3px)}
+
+    /* ── Loading skeleton ── */
+    .skeleton-card{
+      border-radius:20px;overflow:hidden;
+      border:1px solid rgba(255,255,255,.07);background:var(--surface);
+      min-height:380px
+    }
+    .skeleton-img{width:100%;height:200px;background:linear-gradient(90deg,rgba(255,255,255,.04) 25%,rgba(255,255,255,.08) 50%,rgba(255,255,255,.04) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite}
+    .skeleton-line{height:14px;border-radius:7px;background:linear-gradient(90deg,rgba(255,255,255,.04) 25%,rgba(255,255,255,.08) 50%,rgba(255,255,255,.04) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;margin:8px 20px}
+    .skeleton-line.w60{width:60%}
+    .skeleton-line.w40{width:40%}
+    @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+    /* ── Form validation ── */
+    .form-input.error{border-color:rgba(239,68,68,.6)!important}
+    .form-error{font-size:11px;color:rgba(239,68,68,.8);margin-top:4px;display:none}
+    .form-group.has-error .form-error{display:block}
+    .form-btn.loading{pointer-events:none;opacity:.7}
+    .form-btn.loading::after{content:'';display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;margin-left:8px;vertical-align:middle}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* ── Pricing recommended glow ── */
+    .pricing-recommended{position:relative}
+    .pricing-recommended::before{
+      content:'';position:absolute;inset:-1px;border-radius:21px;
+      background:linear-gradient(135deg,var(--accent),rgba(91,44,255,.6));
+      z-index:-1;opacity:.5;filter:blur(12px);transition:opacity .3s
+    }
+    .pricing-recommended:hover::before{opacity:.8}
+
+    /* ── Light mode overrides for new elements ── */
+    body.light .skeleton-img,body.light .skeleton-line{background:linear-gradient(90deg,rgba(0,0,0,.04) 25%,rgba(0,0,0,.08) 50%,rgba(0,0,0,.04) 75%);background-size:200% 100%}
+    body.light #scroll-top{background:#fff;border-color:rgba(0,0,0,.08);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    body.light #scroll-top:hover{background:var(--accent);color:#fff}
   </style>
 </head>
 <body>
@@ -1012,7 +1066,7 @@
       Let's Work Together&nbsp;<svg width="13" height="13"><use href="#ico-arrow"/></svg>
     </button>
     <button id="mobile-toggle" aria-label="Open menu" onclick="toggleMenu()">
-      <svg width="22" height="22" id="menu-ico"><use href="#ico-menu"/></svg>
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
     </button>
   </div>
 </nav>
@@ -1040,6 +1094,11 @@
 <!-- Floating hire button -->
 <button id="float-hire" onclick="scrollToSection('contact')" aria-label="Hire me">✉</button>
 <div id="float-hire-tip">Free quote — reply in 24h</div>
+
+<!-- Scroll to top -->
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
 
 <!-- ═══ HOME ═══ -->
 <section id="home" style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:80px clamp(16px,5vw,56px) 0">
@@ -1128,13 +1187,13 @@
 <!-- ═══ CAPABILITY STRIP ═══ -->
 <div style="background:rgba(99,102,241,.04);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px clamp(16px,5vw,56px);text-align:center;position:relative;z-index:2">
   <p style="margin:0 0 12px;font-size:10px;font-weight:600;letter-spacing:.12em;color:var(--text-3);text-transform:uppercase">What I Build</p>
-  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px 24px;align-items:center">
-    <span style="font-size:12px;color:var(--text-3);letter-spacing:.05em">Websites</span>
-    <span style="font-size:12px;color:var(--text-3);letter-spacing:.05em">E-Commerce</span>
-    <span style="font-size:12px;color:var(--text-3);letter-spacing:.05em">Business Systems</span>
-    <span style="font-size:12px;color:var(--text-3);letter-spacing:.05em">Admin Dashboards</span>
-    <span style="font-size:12px;color:var(--text-3);letter-spacing:.05em">POS Systems</span>
-    <span style="font-size:12px;color:var(--text-3);letter-spacing:.05em">Landing Pages</span>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;align-items:center">
+    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-2);background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);border-radius:100px;padding:5px 14px;font-weight:500"><svg width="12" height="12" style="color:var(--accent)"><use href="#ico-globe"/></svg>Websites</span>
+    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-2);background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);border-radius:100px;padding:5px 14px;font-weight:500"><svg width="12" height="12" style="color:var(--accent)"><use href="#ico-star"/></svg>E-Commerce</span>
+    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-2);background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);border-radius:100px;padding:5px 14px;font-weight:500"><svg width="12" height="12" style="color:var(--accent)"><use href="#ico-code"/></svg>Business Systems</span>
+    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-2);background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);border-radius:100px;padding:5px 14px;font-weight:500"><svg width="12" height="12" style="color:var(--accent)"><use href="#ico-target"/></svg>Admin Dashboards</span>
+    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-2);background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);border-radius:100px;padding:5px 14px;font-weight:500"><svg width="12" height="12" style="color:var(--accent)"><use href="#ico-trending"/></svg>POS Systems</span>
+    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-2);background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);border-radius:100px;padding:5px 14px;font-weight:500"><svg width="12" height="12" style="color:var(--accent)"><use href="#ico-palette"/></svg>Landing Pages</span>
   </div>
 </div>
 
@@ -1160,7 +1219,9 @@
     </div>
 
     <div class="projects-grid" id="projectsGrid">
-      <!-- rendered by js/render.js from js/data.js -->
+      <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line w60"></div><div class="skeleton-line w40"></div><div class="skeleton-line"></div></div>
+      <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line w60"></div><div class="skeleton-line w40"></div><div class="skeleton-line"></div></div>
+      <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line w60"></div><div class="skeleton-line w40"></div><div class="skeleton-line"></div></div>
     </div>
 
     <p id="noResults" style="display:none;text-align:center;padding:60px 0;color:var(--text-2);font-size:18px">No projects match your search.</p>
@@ -1176,7 +1237,9 @@
     </div>
 
     <div class="apps-grid fade-in">
-      <!-- rendered by js/render.js from js/data.js -->
+      <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line w60"></div><div class="skeleton-line w40"></div><div class="skeleton-line"></div></div>
+      <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line w60"></div><div class="skeleton-line w40"></div><div class="skeleton-line"></div></div>
+      <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line w60"></div><div class="skeleton-line w40"></div><div class="skeleton-line"></div></div>
     </div>
   </div>
 </section>
@@ -1441,7 +1504,7 @@
           <div class="service-outcome"><span class="outcome-dot"></span><span class="outcome-txt">Delivered in 5–7 days</span></div>
         </div>
       </div>
-      <div class="service-card fade-in" style="padding:32px;text-align:center;border-color:rgba(99,102,241,.5);background:linear-gradient(135deg,rgba(99,102,241,.08),rgba(91,44,255,.06))">
+      <div class="service-card fade-in pricing-recommended" style="padding:32px;text-align:center;border-color:rgba(99,102,241,.5);background:linear-gradient(135deg,rgba(99,102,241,.08),rgba(91,44,255,.06))">
         <div class="spotlight-overlay"></div>
         <p style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;font-weight:600">Business Website</p>
         <div class="pricing-amount" style="font-size:38px;font-weight:800;line-height:1;margin-bottom:4px">₱35k</div>
@@ -1530,10 +1593,12 @@
               <div class="form-group">
                 <label class="form-label">Name</label>
                 <input type="text" name="name" class="form-input" placeholder="Your name" required/>
+                <span class="form-error">Please enter your name</span>
               </div>
               <div class="form-group">
                 <label class="form-label">Email</label>
                 <input type="email" name="email" class="form-input" placeholder="your@email.com" required/>
+                <span class="form-error">Please enter a valid email</span>
               </div>
             </div>
             <div class="form-group">
@@ -1550,6 +1615,7 @@
             <div class="form-group">
               <label class="form-label">Message</label>
               <textarea name="message" class="form-input" rows="4" placeholder="Tell me about your project…" style="resize:none" required></textarea>
+              <span class="form-error">Please describe your project</span>
             </div>
             <button type="submit" class="form-btn" id="submitBtn">Send My Project Details →</button>
             <p style="text-align:center;font-size:11px;color:var(--text-3);margin-top:6px">⚡ Free quote back within 24 hours · No commitment</p>
@@ -1572,56 +1638,56 @@
           How long does it take to build a website?
           <span class="faq-icon">+</span>
         </button>
-        <p class="faq-a">Most projects are completed within 1–3 weeks depending on scope. Simple landing pages can be done in 3–5 days. I'll give you a precise timeline in your free quote before we start.</p>
+        <div class="faq-a-wrap"><p class="faq-a">Most projects are completed within 1–3 weeks depending on scope. Simple landing pages can be done in 3–5 days. I'll give you a precise timeline in your free quote before we start.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
           How much does a website cost?
           <span class="faq-icon">+</span>
         </button>
-        <p class="faq-a">Every project is unique. Pricing depends on the complexity, number of pages, and features required. I offer competitive rates with no hidden fees — send me your project details and I'll send a transparent quote within 24 hours.</p>
+        <div class="faq-a-wrap"><p class="faq-a">Every project is unique. Pricing depends on the complexity, number of pages, and features required. I offer competitive rates with no hidden fees — send me your project details and I'll send a transparent quote within 24 hours.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
           Do you offer revisions?
           <span class="faq-icon">+</span>
         </button>
-        <p class="faq-a">Yes — structured revision rounds are included in every project. We review together at each milestone so changes happen early, not after launch.</p>
+        <div class="faq-a-wrap"><p class="faq-a">Yes — structured revision rounds are included in every project. We review together at each milestone so changes happen early, not after launch.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
           What do you need from me to get started?
           <span class="faq-icon">+</span>
         </button>
-        <p class="faq-a">Just a brief overview of your project — what you need, your industry, any reference sites you like, and your timeline. I handle the rest: design, development, and deployment.</p>
+        <div class="faq-a-wrap"><p class="faq-a">Just a brief overview of your project — what you need, your industry, any reference sites you like, and your timeline. I handle the rest: design, development, and deployment.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
           Will my website be mobile-friendly and fast?
           <span class="faq-icon">+</span>
         </button>
-        <p class="faq-a">Always. Every site I build is fully responsive across all devices and optimised for performance. Fast load times and clean code are non-negotiable — they directly affect your SEO rankings and conversions.</p>
+        <div class="faq-a-wrap"><p class="faq-a">Always. Every site I build is fully responsive across all devices and optimised for performance. Fast load times and clean code are non-negotiable — they directly affect your SEO rankings and conversions.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
           Can you help with SEO and getting found on Google?
           <span class="faq-icon">+</span>
         </button>
-        <p class="faq-a">Yes. All sites come with solid on-page SEO foundations: semantic HTML, meta tags, structured data, fast load times, and mobile optimisation. I also offer dedicated SEO & Growth packages for deeper strategy.</p>
+        <div class="faq-a-wrap"><p class="faq-a">Yes. All sites come with solid on-page SEO foundations: semantic HTML, meta tags, structured data, fast load times, and mobile optimisation. I also offer dedicated SEO & Growth packages for deeper strategy.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
           How much does a website cost in the Philippines?
           <span class="faq-icon">+</span>
         </button>
-        <p class="faq-a">Website costs in the Philippines vary widely. A simple landing page starts around ₱15,000–₱30,000 while a full business website ranges from ₱30,000–₱100,000+. Crams Creative offers transparent, competitive pricing — send your project details for a free quote within 24 hours.</p>
+        <div class="faq-a-wrap"><p class="faq-a">Website costs in the Philippines vary widely. A simple landing page starts around ₱15,000–₱30,000 while a full business website ranges from ₱30,000–₱100,000+. Crams Creative offers transparent, competitive pricing — send your project details for a free quote within 24 hours.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
           Do you work with international clients outside the Philippines?
           <span class="faq-icon">+</span>
         </button>
-        <p class="faq-a">Absolutely. While based in the Philippines, Crams Creative regularly works with clients in the US, Australia, UK, and across Asia. All projects are handled remotely with fast communication across time zones.</p>
+        <div class="faq-a-wrap"><p class="faq-a">Absolutely. While based in the Philippines, Crams Creative regularly works with clients in the US, Australia, UK, and across Asia. All projects are handled remotely with fast communication across time zones.</p></div>
       </div>
     </div>
 
@@ -1644,6 +1710,7 @@
       </svg>
       <span style="font-size:11px;font-weight:700;letter-spacing:.2em">CRAMS CREATIVE</span>
     </div>
+    <div id="footer-latest" style="font-size:12px;color:var(--text-3);margin:8px 0"></div>
     <p class="footer-copy">© 2026 Crams Creative — Freelance Web Developer &amp; Designer, Philippines</p>
     <div class="footer-links">
       <button class="footer-link" onclick="scrollToSection('work')">Work</button>
@@ -1668,11 +1735,10 @@ function scrollToSection(id) {
 /* ── Mobile menu ── */
 function toggleMenu() {
   const m = document.getElementById('mobile-menu');
-  const ico = document.getElementById('menu-ico');
+  const btn = document.getElementById('mobile-toggle');
   m.classList.toggle('open');
-  ico.innerHTML = m.classList.contains('open')
-    ? '<use href="#ico-x"/>'
-    : '<use href="#ico-menu"/>';
+  btn.classList.toggle('open');
+  document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
 }
 
 /* ── Sticky nav ── */
@@ -1755,7 +1821,24 @@ async function submitForm(e) {
   e.preventDefault();
   const btn = document.getElementById('submitBtn');
   const form = e.target;
+  
+  /* Clear previous errors */
+  form.querySelectorAll('.form-group').forEach(g => g.classList.remove('has-error'));
+  form.querySelectorAll('.form-input').forEach(i => i.classList.remove('error'));
+  
+  /* Validate */
+  let valid = true;
+  const name = form.querySelector('[name="name"]');
+  const email = form.querySelector('[name="email"]');
+  const message = form.querySelector('[name="message"]');
+  
+  if(!name.value.trim()){name.classList.add('error');name.closest('.form-group').classList.add('has-error');valid=false;}
+  if(!email.value.trim()||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)){email.classList.add('error');email.closest('.form-group').classList.add('has-error');valid=false;}
+  if(!message.value.trim()){message.classList.add('error');message.closest('.form-group').classList.add('has-error');valid=false;}
+  if(!valid) return;
+  
   btn.textContent = 'Sending…';
+  btn.classList.add('loading');
   btn.disabled = true;
   try {
     const res = await fetch('https://formspree.io/f/mdavkjow', {
@@ -1765,19 +1848,22 @@ async function submitForm(e) {
     });
     if (res.ok) {
       btn.textContent = '✓ Message Sent!';
+      btn.classList.remove('loading');
       btn.classList.add('sent');
       form.reset();
       setTimeout(() => {
-        btn.textContent = 'Send Message →';
+        btn.textContent = 'Send My Project Details →';
         btn.classList.remove('sent');
         btn.disabled = false;
       }, 4000);
     } else {
       btn.textContent = 'Error — try again';
+      btn.classList.remove('loading');
       btn.disabled = false;
     }
   } catch {
     btn.textContent = 'Error — try again';
+    btn.classList.remove('loading');
     btn.disabled = false;
   }
 }
@@ -1787,6 +1873,7 @@ async function submitForm(e) {
   const bar = document.getElementById('sticky-cta');
   const floatBtn = document.getElementById('float-hire');
   const floatTip = document.getElementById('float-hire-tip');
+  const scrollTop = document.getElementById('scroll-top');
   let heroHeight = 0;
   function update(){
     const hero = document.getElementById('home');
@@ -1795,6 +1882,7 @@ async function submitForm(e) {
     bar && bar.classList.toggle('show', show);
     if(floatBtn) floatBtn.style.opacity = show ? '1' : '0';
     if(floatTip) floatTip.style.display = show ? '' : 'none';
+    if(scrollTop) scrollTop.classList.toggle('visible', window.scrollY > 600);
   }
   if(floatBtn) floatBtn.style.opacity = '0';
   window.addEventListener('scroll', update, {passive:true});
@@ -1941,6 +2029,13 @@ document.addEventListener('DOMContentLoaded',function(){setTimeout(updateStats,1
       if(ha&&typeof APPS!=='undefined'&&APPS.length>0) ha.textContent=APPS.length;
     }catch(e){}
   },500);
+
+  /* Footer: show latest project */
+  var footerLatest=document.getElementById('footer-latest');
+  if(footerLatest&&PROJECTS.length>0){
+    var last=PROJECTS[PROJECTS.length-1];
+    footerLatest.innerHTML='Latest: <strong style="color:var(--text-2)">'+stripHtml(last.title)+'</strong> — '+stripHtml(last.subtitle||last.heroCat);
+  }
 })();
 </script>
 <script src="js/render.js"></script>
