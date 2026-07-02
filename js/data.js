@@ -103,7 +103,7 @@ const PROJECTS = [
     searchTags: 'html css javascript animation gsap three.js motion interactive animated experiences',
     heroName: 'Animated Website',
     heroCat: 'Motion &amp; Animation',
-    img: 'project-images/animated-website.jpg',
+    img: 'project-images/animated-website.jpg?v=2',
     imgAlt: 'Animated Experiences',
     badge: { label: 'Interactive', style: 'primary' },
     title: 'ANIMATED WEB',
