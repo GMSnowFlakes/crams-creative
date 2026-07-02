@@ -9,11 +9,65 @@ const CHECK_SVG = '<svg width="13" height="13" style="color:#8A4DFF;flex-shrink:
 const EXTERNAL_SVG = '<svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14 21 3"/></svg>';
 const PLAY_SVG = '<svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>';
 
+/* Category-specific CSS visuals — no external images needed */
+function buildVisual(heroCat) {
+  var cat = String(heroCat).toLowerCase().replace(/&amp;/g,'&');
+  if (cat.indexOf('e-commerce') !== -1 || cat.indexOf('ecommerce') !== -1 || cat.indexOf('jewelry') !== -1 || cat.indexOf('luxury') !== -1) {
+    return '<div class="proj-visual vis-ecommerce"><div class="vis-overlay">'
+      + '<div class="prod-card"><div class="prod-thumb"></div><div class="prod-bar"></div><div class="prod-bar short"></div><div class="prod-price"></div></div>'
+      + '<div class="prod-card"><div class="prod-thumb" style="background:linear-gradient(135deg,rgba(245,158,11,.1),rgba(138,77,255,.06))"></div><div class="prod-bar"></div><div class="prod-bar short"></div><div class="prod-price"></div></div>'
+      + '<div class="prod-card"><div class="prod-thumb"></div><div class="prod-bar"></div><div class="prod-bar short"></div><div class="prod-price"></div></div>'
+      + '</div></div>';
+  }
+  if (cat.indexOf('sport') !== -1 || cat.indexOf('community') !== -1 || cat.indexOf('pickleball') !== -1) {
+    return '<div class="proj-visual vis-sports"><div class="vis-overlay">'
+      + '<div class="court"></div><div class="court"></div>'
+      + '<div class="court-line"></div><div class="court-line"></div>'
+      + '<div class="ball"></div><div class="ball"></div>'
+      + '</div></div>';
+  }
+  if (cat.indexOf('corporate') !== -1 || cat.indexOf('construction') !== -1) {
+    return '<div class="proj-visual vis-corporate"><div class="vis-overlay">'
+      + '<div class="tower"></div><div class="tower"></div><div class="tower"></div>'
+      + '<div class="beam"></div><div class="beam"></div>'
+      + '<div class="window"></div><div class="window"></div><div class="window"></div><div class="window"></div>'
+      + '</div></div>';
+  }
+  if (cat.indexOf('restaurant') !== -1 || cat.indexOf('dining') !== -1 || cat.indexOf('food') !== -1) {
+    return '<div class="proj-visual vis-restaurant"><div class="vis-overlay">'
+      + '<div class="plate"></div><div class="plate-inner"></div>'
+      + '<div class="utensil"></div><div class="utensil"></div>'
+      + '<div class="steam"></div><div class="steam"></div><div class="steam"></div>'
+      + '</div></div>';
+  }
+  if (cat.indexOf('animation') !== -1 || cat.indexOf('motion') !== -1 || cat.indexOf('interactive') !== -1) {
+    return '<div class="proj-visual vis-creative"><div class="vis-overlay">'
+      + '<div class="particle"></div><div class="particle"></div><div class="particle"></div>'
+      + '<div class="particle"></div><div class="particle"></div><div class="particle"></div>'
+      + '<div class="p-line"></div><div class="p-line"></div><div class="p-line"></div>'
+      + '</div></div>';
+  }
+  if (cat.indexOf('ai') !== -1 || cat.indexOf('saas') !== -1 || cat.indexOf('tech') !== -1) {
+    return '<div class="proj-visual vis-ai"><div class="vis-overlay">'
+      + '<div class="chip"></div>'
+      + '<div class="trace"></div><div class="trace"></div><div class="trace"></div><div class="trace"></div>'
+      + '<div class="node-dot"></div><div class="node-dot"></div><div class="node-dot"></div><div class="node-dot"></div>'
+      + '<div class="pulse"></div><div class="pulse"></div>'
+      + '</div></div>';
+  }
+  /* Fallback: creative particles */
+  return '<div class="proj-visual vis-creative"><div class="vis-overlay">'
+    + '<div class="particle"></div><div class="particle"></div><div class="particle"></div>'
+    + '<div class="particle"></div><div class="particle"></div><div class="particle"></div>'
+    + '<div class="p-line"></div><div class="p-line"></div><div class="p-line"></div>'
+    + '</div></div>';
+}
+
 function renderProject(p) {
   return `
     <div class="project-card fade-in" data-type="${p.type}" data-tags="${p.searchTags}" data-hero-name="${p.heroName}" data-hero-cat="${p.heroCat}">
       <div class="proj-img-wrap">
-        <img src="${p.img}" alt="${p.imgAlt}" loading="lazy"/>
+        ${buildVisual(p.heroCat)}
         <div class="proj-img-overlay"></div>
         <div class="proj-badges">
           <span class="proj-badge" style="${BADGE[p.badge.style]}">${p.badge.label}</span>

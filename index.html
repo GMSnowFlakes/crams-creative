@@ -3,6 +3,9 @@
 <head>
   <!-- JS-ready guard: content visible by default; opacity gating only activates once JS runs -->
   <script>document.documentElement.classList.add('js-ready')</script>
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-EWPF2580G4"></script>
   <script>
@@ -380,6 +383,95 @@
     .proj-img-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
     .project-card:hover .proj-img-wrap img{transform:scale(1.06)}
     .proj-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82),rgba(0,0,0,.04))}
+
+    /* ── CSS-only project visuals (no external images needed) ── */
+    .proj-visual{position:absolute;inset:0;overflow:hidden}
+    .vis-overlay{position:absolute;inset:0}
+
+    /* E-Commerce — product grid cards */
+    .vis-ecommerce{background:linear-gradient(135deg,#12101f,#0e0c1a)}
+    .vis-ecommerce .vis-overlay{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:2rem}
+    .vis-ecommerce .prod-card{border-radius:8px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.1);display:flex;flex-direction:column;overflow:hidden}
+    .vis-ecommerce .prod-thumb{flex:1;min-height:40px;background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(138,77,255,.08))}
+    .vis-ecommerce .prod-bar{height:6px;margin:6px 8px;border-radius:3px;background:rgba(99,102,241,.15)}
+    .vis-ecommerce .prod-bar.short{width:60%;background:rgba(245,158,11,.12)}
+    .vis-ecommerce .prod-price{height:5px;width:30%;margin:2px 8px 8px;border-radius:2px;background:rgba(245,158,11,.2)}
+
+    /* Sports & Community — court lines + ball */
+    .vis-sports{background:linear-gradient(135deg,#10121c,#0c1018)}
+    .vis-sports .vis-overlay{position:relative}
+    .vis-sports .court{position:absolute;border:1px solid rgba(99,102,241,.15);border-radius:4px}
+    .vis-sports .court:nth-child(1){width:60%;height:70%;top:15%;left:20%}
+    .vis-sports .court:nth-child(2){width:40%;height:100%;top:0;left:30%;border-left:none;border-right:none}
+    .vis-sports .court-line{position:absolute;height:1px;background:rgba(99,102,241,.1)}
+    .vis-sports .court-line:nth-child(3){width:100%;top:50%;left:0}
+    .vis-sports .court-line:nth-child(4){width:1px;height:100%;left:50%;top:0}
+    .vis-sports .ball{position:absolute;border-radius:50%;background:rgba(245,158,11,.25);border:1px solid rgba(245,158,11,.3)}
+    .vis-sports .ball:nth-child(5){width:20px;height:20px;top:35%;left:60%}
+    .vis-sports .ball:nth-child(6){width:12px;height:12px;top:60%;left:38%;background:rgba(99,102,241,.2);border-color:rgba(99,102,241,.25)}
+
+    /* Corporate — building structure */
+    .vis-corporate{background:linear-gradient(135deg,#11101e,#0d0b18)}
+    .vis-corporate .vis-overlay{position:relative}
+    .vis-corporate .tower{position:absolute;border:1px solid rgba(99,102,241,.15);border-radius:3px}
+    .vis-corporate .tower:nth-child(1){width:22%;height:80%;bottom:10%;left:15%;border-color:rgba(99,102,241,.25)}
+    .vis-corporate .tower:nth-child(2){width:18%;height:65%;bottom:10%;left:40%;border-color:rgba(129,140,248,.18)}
+    .vis-corporate .tower:nth-child(3){width:20%;height:50%;bottom:10%;left:65%;border-color:rgba(99,102,241,.15)}
+    .vis-corporate .beam{position:absolute;height:2px;background:rgba(99,102,241,.1)}
+    .vis-corporate .beam:nth-child(4){width:80%;bottom:10%;left:10%}
+    .vis-corporate .beam:nth-child(5){width:60%;bottom:35%;left:20%}
+    .vis-corporate .window{position:absolute;width:6px;height:6px;border-radius:1px;background:rgba(245,158,11,.15)}
+    .vis-corporate .window:nth-child(6){top:30%;left:22%}
+    .vis-corporate .window:nth-child(7){top:45%;left:44%}
+    .vis-corporate .window:nth-child(8){top:55%;left:70%}
+    .vis-corporate .window:nth-child(9){top:38%;left:72%;background:rgba(99,102,241,.15)}
+
+    /* Restaurant — plate + utensils */
+    .vis-restaurant{background:linear-gradient(135deg,#13111e,#0e0c18)}
+    .vis-restaurant .vis-overlay{position:relative}
+    .vis-restaurant .plate{position:absolute;border-radius:50%;border:2px solid rgba(99,102,241,.18);top:20%;left:30%;width:120px;height:120px}
+    .vis-restaurant .plate-inner{position:absolute;border-radius:50%;border:1px solid rgba(99,102,241,.1);top:30%;left:35%;width:80px;height:80px}
+    .vis-restaurant .utensil{position:absolute;border-radius:2px}
+    .vis-restaurant .utensil:nth-child(3){width:3px;height:80px;background:rgba(129,140,248,.15);top:25%;left:18%;transform:rotate(-15deg);border-radius:2px}
+    .vis-restaurant .utensil:nth-child(4){width:3px;height:70px;background:rgba(129,140,248,.15);top:28%;left:78%;transform:rotate(10deg);border-radius:2px}
+    .vis-restaurant .steam{position:absolute;width:1px;background:rgba(255,255,255,.06);border-radius:1px}
+    .vis-restaurant .steam:nth-child(5){height:30px;top:10%;left:45%}
+    .vis-restaurant .steam:nth-child(6){height:25px;top:12%;left:52%}
+    .vis-restaurant .steam:nth-child(7){height:20px;top:8%;left:48%}
+
+    /* Creative / Animation — particles + connecting lines */
+    .vis-creative{background:linear-gradient(135deg,#10101c,#0c0a17)}
+    .vis-creative .vis-overlay{position:relative}
+    .vis-creative .particle{position:absolute;border-radius:50%;background:rgba(99,102,241,.35);border:1px solid rgba(99,102,241,.25)}
+    .vis-creative .particle:nth-child(1){width:14px;height:14px;top:25%;left:20%}
+    .vis-creative .particle:nth-child(2){width:10px;height:10px;top:50%;left:45%;background:rgba(245,158,11,.3);border-color:rgba(245,158,11,.25)}
+    .vis-creative .particle:nth-child(3){width:12px;height:12px;top:20%;left:65%}
+    .vis-creative .particle:nth-child(4){width:8px;height:8px;top:65%;left:30%}
+    .vis-creative .particle:nth-child(5){width:11px;height:11px;top:40%;left:75%}
+    .vis-creative .particle:nth-child(6){width:7px;height:7px;top:70%;left:60%;background:rgba(129,140,248,.3);border-color:rgba(129,140,248,.2)}
+    .vis-creative .p-line{position:absolute;height:1px;background:rgba(99,102,241,.12);transform-origin:left center}
+    .vis-creative .p-line:nth-child(7){width:100px;top:28%;left:22%;transform:rotate(35deg)}
+    .vis-creative .p-line:nth-child(8){width:80px;top:52%;left:47%;transform:rotate(-20deg)}
+    .vis-creative .p-line:nth-child(9){width:70px;top:22%;left:67%;transform:rotate(50deg)}
+
+    /* AI / SaaS — circuit board */
+    .vis-ai{background:linear-gradient(135deg,#0f0e1c,#0b0a18)}
+    .vis-ai .vis-overlay{position:relative}
+    .vis-ai .chip{position:absolute;border:1px solid rgba(99,102,241,.25);border-radius:4px;top:30%;left:35%;width:50px;height:50px;background:rgba(99,102,241,.06)}
+    .vis-ai .chip::after{content:'';position:absolute;width:12px;height:12px;border-radius:50%;background:rgba(99,102,241,.15);top:50%;left:50%;transform:translate(-50%,-50%)}
+    .vis-ai .trace{position:absolute;height:1px;background:rgba(99,102,241,.12)}
+    .vis-ai .trace:nth-child(2){width:25%;top:42%;left:10%}
+    .vis-ai .trace:nth-child(3){width:20%;top:42%;right:10%}
+    .vis-ai .trace:nth-child(4){width:1px;height:20%;top:15%;left:50%}
+    .vis-ai .trace:nth-child(5){width:1px;height:15%;bottom:20%;left:50%}
+    .vis-ai .node-dot{position:absolute;border-radius:50%;background:rgba(245,158,11,.2);border:1px solid rgba(245,158,11,.2)}
+    .vis-ai .node-dot:nth-child(6){width:8px;height:8px;top:40%;left:12%}
+    .vis-ai .node-dot:nth-child(7){width:8px;height:8px;top:40%;right:12%}
+    .vis-ai .node-dot:nth-child(8){width:6px;height:6px;top:14%;left:48%}
+    .vis-ai .node-dot:nth-child(9){width:6px;height:6px;bottom:18%;left:48%}
+    .vis-ai .pulse{position:absolute;border-radius:50%;border:1px solid rgba(99,102,241,.1);top:28%;left:33%;width:54px;height:54px;animation:ai-pulse 3s ease-in-out infinite}
+    .vis-ai .pulse:nth-child(10){animation-delay:1s}
+    @keyframes ai-pulse{0%,100%{transform:scale(1);opacity:.4}50%{transform:scale(1.3);opacity:0}}
     .proj-badges{position:absolute;top:14px;left:14px;display:flex;gap:6px;flex-wrap:wrap;max-width:calc(100% - 28px)}
     .proj-badge{
       border-radius:100px;padding:4px 12px;
@@ -772,6 +864,15 @@
     :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
     button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
+    /* ── Infinite marquee ── */
+    .marquee-wrap{overflow:hidden;position:relative;width:100%}
+    .marquee-track{display:flex;width:max-content;animation:marquee-scroll 30s linear infinite}
+    .marquee-track:hover{animation-play-state:paused}
+    .marquee-item{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--text-2);padding:8px 20px;white-space:nowrap;flex-shrink:0}
+    .marquee-item svg{flex-shrink:0}
+    @keyframes marquee-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    @media (prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
     /* ── Reduced motion ── */
     @media (prefers-reduced-motion:reduce){
       *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
@@ -819,6 +920,36 @@
     body.light .process-timeline-title{color:#111}
     body.light .process-timeline-desc{color:rgba(0,0,0,.55)}
     body.light .process-timeline-dot{background:#fff;border-color:var(--accent)}
+    /* Light mode: CSS project visuals */
+    body.light .vis-ecommerce{background:linear-gradient(135deg,#f0eef8,#e8e4f4)}
+    body.light .vis-ecommerce .prod-card{background:rgba(99,102,241,.06);border-color:rgba(99,102,241,.12)}
+    body.light .vis-ecommerce .prod-thumb{background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(138,77,255,.06))}
+    body.light .vis-ecommerce .prod-bar{background:rgba(99,102,241,.15)}
+    body.light .vis-ecommerce .prod-bar.short{background:rgba(245,158,11,.12)}
+    body.light .vis-ecommerce .prod-price{background:rgba(245,158,11,.18)}
+    body.light .vis-sports{background:linear-gradient(135deg,#eef0f8,#e4e8f0)}
+    body.light .vis-sports .court{border-color:rgba(99,102,241,.15)}
+    body.light .vis-sports .court-line{background:rgba(99,102,241,.1)}
+    body.light .vis-sports .ball{background:rgba(245,158,11,.2);border-color:rgba(245,158,11,.25)}
+    body.light .vis-sports .ball:nth-child(6){background:rgba(99,102,241,.15);border-color:rgba(99,102,241,.2)}
+    body.light .vis-corporate{background:linear-gradient(135deg,#f0eef8,#e8e4f4)}
+    body.light .vis-corporate .tower{border-color:rgba(99,102,241,.15)}
+    body.light .vis-corporate .beam{background:rgba(99,102,241,.1)}
+    body.light .vis-corporate .window{background:rgba(245,158,11,.12)}
+    body.light .vis-restaurant{background:linear-gradient(135deg,#f0eef8,#e8e4f4)}
+    body.light .vis-restaurant .plate{border-color:rgba(99,102,241,.15)}
+    body.light .vis-restaurant .plate-inner{border-color:rgba(99,102,241,.1)}
+    body.light .vis-restaurant .utensil{background:rgba(129,140,248,.15)}
+    body.light .vis-restaurant .steam{background:rgba(0,0,0,.04)}
+    body.light .vis-creative{background:linear-gradient(135deg,#f0eef8,#e8e4f4)}
+    body.light .vis-creative .particle{background:rgba(99,102,241,.25);border-color:rgba(99,102,241,.2)}
+    body.light .vis-creative .p-line{background:rgba(99,102,241,.1)}
+    body.light .vis-ai{background:linear-gradient(135deg,#f0eef8,#e8e4f4)}
+    body.light .vis-ai .chip{border-color:rgba(99,102,241,.2);background:rgba(99,102,241,.04)}
+    body.light .vis-ai .chip::after{background:rgba(99,102,241,.12)}
+    body.light .vis-ai .trace{background:rgba(99,102,241,.1)}
+    body.light .vis-ai .node-dot{background:rgba(245,158,11,.15);border-color:rgba(245,158,11,.2)}
+    body.light .vis-ai .pulse{border-color:rgba(99,102,241,.1)}
     body.light .process-timeline::before{background:rgba(0,0,0,.08)}
     body.light .skill-card{background:#fff;border-color:rgba(0,0,0,.08)}
     body.light .skill-tag{background:rgba(0,0,0,.04);color:rgba(0,0,0,.6);border-color:rgba(0,0,0,.08)}
@@ -859,6 +990,8 @@
     body.light .pricing-desc{color:rgba(0,0,0,.5)}
     body.light .capability-strip span{color:rgba(0,0,0,.35)}
     body.light .capability-strip p{color:rgba(0,0,0,.25)}
+    body.light .marquee-item{color:rgba(0,0,0,.55)}
+    body.light .why-cards-grid .service-card{background:#fff;border-color:rgba(0,0,0,.08)}
     body.light .hero-title{color:#111}
     body.light .why-card h3{color:#111}
     body.light .why-card p{color:rgba(0,0,0,.55)}
@@ -900,6 +1033,8 @@
       .work-controls{align-items:flex-start;width:100%}
       .search-bar{width:100%}
       .search-bar input{width:100%;flex:1}
+      .why-cards-grid{display:flex!important;flex-direction:column}
+      .why-cards-grid .service-card{grid-column:span 1!important}
     }
     @media(max-width:900px){
       #home{padding-top:100px!important}
@@ -1139,14 +1274,14 @@
     <!-- Right: Cycling project showcase (auto-populated from data.js) -->
     <div id="hero-card" style="opacity:0;transform:translateY(40px);transition:opacity .8s ease .6s,transform .8s cubic-bezier(.16,1,.3,1) .6s;position:relative;height:420px;overflow:hidden">
       <div id="hero-slides"></div>
-      <!-- Stat badges -->
-      <div style="position:absolute;top:-12px;right:-12px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 16px;box-shadow:0 8px 30px rgba(0,0,0,.4);z-index:2">
-        <div style="font-size:22px;font-weight:700;color:var(--accent);line-height:1" id="hero-stat-p">—</div>
-        <div style="font-size:10px;color:var(--text-3)">Projects</div>
+      <!-- Stat badges (subtle) -->
+      <div style="position:absolute;top:14px;right:14px;background:rgba(9,11,15,.75);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:8px 12px;z-index:2">
+        <div style="font-size:16px;font-weight:700;color:var(--accent);line-height:1" id="hero-stat-p">—</div>
+        <div style="font-size:9px;color:var(--text-3);letter-spacing:.05em">Projects</div>
       </div>
-      <div style="position:absolute;bottom:-10px;left:-14px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 16px;box-shadow:0 8px 30px rgba(0,0,0,.4);z-index:2">
-        <div style="font-size:22px;font-weight:700;color:var(--accent);line-height:1" id="hero-stat-a">—</div>
-        <div style="font-size:10px;color:var(--text-3)">Live Apps</div>
+      <div style="position:absolute;bottom:14px;left:14px;background:rgba(9,11,15,.75);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:8px 12px;z-index:2">
+        <div style="font-size:16px;font-weight:700;color:var(--accent);line-height:1" id="hero-stat-a">—</div>
+        <div style="font-size:9px;color:var(--text-3);letter-spacing:.05em">Live Apps</div>
       </div>
     </div>
   </div>
@@ -1184,16 +1319,10 @@
   </div>
 </section>
 
-<!-- ═══ CAPABILITY STRIP ═══ -->
-<div style="background:rgba(99,102,241,.04);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px clamp(16px,5vw,56px);text-align:center;position:relative;z-index:2">
-  <p style="margin:0 0 12px;font-size:10px;font-weight:600;letter-spacing:.12em;color:var(--text-3);text-transform:uppercase">What I Build</p>
-  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;align-items:center">
-    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-2);background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);border-radius:100px;padding:5px 14px;font-weight:500"><svg width="12" height="12" style="color:var(--accent)"><use href="#ico-globe"/></svg>Websites</span>
-    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-2);background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);border-radius:100px;padding:5px 14px;font-weight:500"><svg width="12" height="12" style="color:var(--accent)"><use href="#ico-star"/></svg>E-Commerce</span>
-    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-2);background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);border-radius:100px;padding:5px 14px;font-weight:500"><svg width="12" height="12" style="color:var(--accent)"><use href="#ico-code"/></svg>Business Systems</span>
-    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-2);background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);border-radius:100px;padding:5px 14px;font-weight:500"><svg width="12" height="12" style="color:var(--accent)"><use href="#ico-target"/></svg>Admin Dashboards</span>
-    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-2);background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);border-radius:100px;padding:5px 14px;font-weight:500"><svg width="12" height="12" style="color:var(--accent)"><use href="#ico-trending"/></svg>POS Systems</span>
-    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-2);background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);border-radius:100px;padding:5px 14px;font-weight:500"><svg width="12" height="12" style="color:var(--accent)"><use href="#ico-palette"/></svg>Landing Pages</span>
+<!-- ═══ CAPABILITY STRIP (Marquee) ═══ -->
+<div style="background:rgba(99,102,241,.04);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 0;text-align:center;position:relative;z-index:2">
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="cap-marquee"></div>
   </div>
 </div>
 
@@ -1443,42 +1572,59 @@
       <h2 class="section-title" style="margin-bottom:0">Why CRAMS Creative?</h2>
       <p style="max-width:320px;font-size:13px;line-height:1.7;color:var(--text-2)">There are a lot of web developers. Here's what makes the difference.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
-      <div class="service-card fade-in" style="padding:28px 28px 24px">
+    <div class="why-cards-grid" style="display:grid;grid-template-columns:repeat(12,1fr);gap:16px">
+      <!-- Large card (spans 5 cols) -->
+      <div class="service-card fade-in" style="grid-column:span 5;padding:32px 28px;display:flex;flex-direction:column;justify-content:space-between">
         <div class="spotlight-overlay"></div>
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(99,102,241,.12);display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="20" height="20" style="color:var(--accent)"><use href="#ico-target"/></svg></div>
-        <h3 class="why-card" style="font-size:16px;font-weight:700;margin-bottom:10px">Design + Code, One Person</h3>
-        <p style="font-size:13px;line-height:1.72;color:var(--text-2)">No handoffs between a designer and a developer. I handle both — which means your vision stays intact from wireframe to live site, with zero translation errors.</p>
+        <div>
+          <div style="width:48px;height:48px;border-radius:14px;background:rgba(99,102,241,.12);display:flex;align-items:center;justify-content:center;margin-bottom:18px"><svg width="22" height="22" style="color:var(--accent)"><use href="#ico-target"/></svg></div>
+          <h3 style="font-size:20px;font-weight:700;margin-bottom:12px">Design + Code, One Person</h3>
+          <p style="font-size:14px;line-height:1.72;color:var(--text-2)">No handoffs between a designer and a developer. I handle both — which means your vision stays intact from wireframe to live site, with zero translation errors.</p>
+        </div>
+        <div style="margin-top:28px;padding-top:18px;border-top:1px solid var(--border);display:flex;align-items:center;gap:8px"><span style="font-size:12px;color:var(--accent);font-weight:600">0 handoffs</span><span style="font-size:12px;color:var(--text-3)">— faster delivery</span></div>
       </div>
-      <div class="service-card fade-in" style="padding:28px 28px 24px">
+      <!-- Medium card (spans 4 cols, offset) -->
+      <div class="service-card fade-in" style="grid-column:span 4;padding:28px 24px">
         <div class="spotlight-overlay"></div>
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(99,102,241,.12);display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="20" height="20" style="color:var(--accent)"><use href="#ico-trending"/></svg></div>
-        <h3 class="why-card" style="font-size:16px;font-weight:700;margin-bottom:10px">Fast, Consistent Communication</h3>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(99,102,241,.12);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" style="color:var(--accent)"><use href="#ico-trending"/></svg></div>
+          <h3 style="font-size:16px;font-weight:700">Fast Communication</h3>
+        </div>
         <p style="font-size:13px;line-height:1.72;color:var(--text-2)">I respond within 24 hours, always. No ghosting, no waiting a week for updates. You'll know exactly where your project stands at every stage.</p>
       </div>
-      <div class="service-card fade-in" style="padding:28px 28px 24px">
+      <!-- Medium card (spans 3 cols) -->
+      <div class="service-card fade-in" style="grid-column:span 3;padding:28px 24px;text-align:center">
         <div class="spotlight-overlay"></div>
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(99,102,241,.12);display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="20" height="20" style="color:var(--accent)"><use href="#ico-code"/></svg></div>
-        <h3 class="why-card" style="font-size:16px;font-weight:700;margin-bottom:10px">Websites AND Business Systems</h3>
-        <p style="font-size:13px;line-height:1.72;color:var(--text-2)">Most freelancers only do websites. I also build custom internal tools — POS systems, inventory trackers, invoice apps — the kind of software that runs your actual operations.</p>
+        <div style="width:44px;height:44px;border-radius:12px;background:rgba(99,102,241,.12);display:flex;align-items:center;justify-content:center;margin:0 auto 14px"><svg width="20" height="20" style="color:var(--accent)"><use href="#ico-code"/></svg></div>
+        <h3 style="font-size:16px;font-weight:700;margin-bottom:8px">Websites AND Business Systems</h3>
+        <p style="font-size:12px;line-height:1.72;color:var(--text-2)">POS systems, inventory trackers, invoice apps — the software that runs your actual operations.</p>
       </div>
-      <div class="service-card fade-in" style="padding:28px 28px 24px">
+      <!-- Full-width accent card -->
+      <div class="service-card fade-in" style="grid-column:span 7;padding:28px 32px;background:linear-gradient(135deg,rgba(99,102,241,.08),rgba(91,44,255,.06));border-color:rgba(99,102,241,.25)">
         <div class="spotlight-overlay"></div>
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(99,102,241,.12);display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="20" height="20" style="color:var(--accent)"><use href="#ico-globe"/></svg></div>
-        <h3 class="why-card" style="font-size:16px;font-weight:700;margin-bottom:10px">Philippines-Based, World-Standard</h3>
-        <p style="font-size:13px;line-height:1.72;color:var(--text-2)">Based in the Philippines with rates that reflect local value — but with output quality that competes internationally. You get premium work without premium-agency overhead.</p>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
+          <div style="width:40px;height:40px;border-radius:11px;background:rgba(99,102,241,.15);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" style="color:var(--accent)"><use href="#ico-globe"/></svg></div>
+          <h3 style="font-size:17px;font-weight:700">Philippines-Based, World-Standard</h3>
+        </div>
+        <p style="font-size:14px;line-height:1.72;color:var(--text-2)">Based in the Philippines with rates that reflect local value — but with output quality that competes internationally. Premium work without premium-agency overhead.</p>
       </div>
-      <div class="service-card fade-in" style="padding:28px 28px 24px">
+      <!-- Small card (spans 5 cols) -->
+      <div class="service-card fade-in" style="grid-column:span 5;padding:28px 24px">
         <div class="spotlight-overlay"></div>
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(99,102,241,.12);display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="20" height="20" style="color:var(--accent)"><use href="#ico-palette"/></svg></div>
-        <h3 class="why-card" style="font-size:16px;font-weight:700;margin-bottom:10px">Every Pixel Intentional</h3>
-        <p style="font-size:13px;line-height:1.72;color:var(--text-2)">I don't use templates or generic kits. Every layout, animation, and interaction is designed specifically for your brand and your users. The result actually looks like your business.</p>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(99,102,241,.12);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" style="color:var(--accent)"><use href="#ico-palette"/></svg></div>
+          <h3 style="font-size:16px;font-weight:700">Every Pixel Intentional</h3>
+        </div>
+        <p style="font-size:13px;line-height:1.72;color:var(--text-2)">I don't use templates or generic kits. Every layout, animation, and interaction is designed specifically for your brand and your users.</p>
       </div>
-      <div class="service-card fade-in" style="padding:28px 28px 24px">
+      <!-- Wide card (spans 12 cols, minimal) -->
+      <div class="service-card fade-in" style="grid-column:span 12;padding:20px 28px;display:flex;align-items:center;gap:20px">
         <div class="spotlight-overlay"></div>
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(99,102,241,.12);display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="20" height="20" style="color:var(--accent)"><use href="#ico-check"/></svg></div>
-        <h3 class="why-card" style="font-size:16px;font-weight:700;margin-bottom:10px">You Own Everything</h3>
-        <p style="font-size:13px;line-height:1.72;color:var(--text-2)">Full source code, full ownership. No proprietary builders, no monthly platform lock-in. What I build is yours — to host wherever you want, forever.</p>
+        <div style="width:40px;height:40px;border-radius:11px;background:rgba(34,197,94,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="18" height="18" style="color:#22C55E"><use href="#ico-check"/></svg></div>
+        <div>
+          <h3 style="font-size:16px;font-weight:700;margin-bottom:4px">You Own Everything</h3>
+          <p style="font-size:13px;color:var(--text-2)">Full source code, full ownership. No proprietary builders, no monthly platform lock-in. What I build is yours — to host wherever you want, forever.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1966,6 +2112,32 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideo()
   }
 })();
 
+/* ── Marquee population ── */
+(function(){
+  var items=[
+    {icon:'ico-globe',label:'Websites'},
+    {icon:'ico-star',label:'E-Commerce'},
+    {icon:'ico-code',label:'Business Systems'},
+    {icon:'ico-target',label:'Admin Dashboards'},
+    {icon:'ico-trending',label:'POS Systems'},
+    {icon:'ico-palette',label:'Landing Pages'},
+    {icon:'ico-globe',label:'Web Apps'},
+    {icon:'ico-code',label:'React / Next.js'},
+    {icon:'ico-target',label:'UI/UX Design'},
+    {icon:'ico-trending',label:'SEO & Growth'}
+  ];
+  var track=document.getElementById('cap-marquee');
+  if(!track)return;
+  var html='';
+  /* Render items twice for seamless loop */
+  for(var r=0;r<2;r++){
+    items.forEach(function(item){
+      html+='<span class="marquee-item"><svg width="12" height="12" style="color:var(--accent)"><use href="#'+item.icon+'"/></svg>'+item.label+'</span>';
+    });
+  }
+  track.innerHTML=html;
+})();
+
 /* ── Dynamic stats from data ── */
 function updateStats(){
   try{
@@ -1977,12 +2149,110 @@ function updateStats(){
 }
 document.addEventListener('DOMContentLoaded',function(){setTimeout(updateStats,1500)});
 </script>
+/* ── GSAP ScrollTrigger Animations ── */
+(function(){
+  if(typeof gsap==='undefined'||typeof ScrollTrigger==='undefined')return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* About image: scale 0.85 → 1.0 on scroll */
+  var aboutImg=document.querySelector('.about-panel img');
+  if(aboutImg){
+    gsap.fromTo(aboutImg,{scale:.85,opacity:.6},{scale:1,opacity:.88,ease:'none',scrollTrigger:{trigger:'#about',start:'top 80%',end:'center center',scrub:1}});
+  }
+
+  /* Process timeline: pin and highlight steps sequentially */
+  var processSteps=document.querySelectorAll('.process-timeline-step');
+  if(processSteps.length){
+    processSteps.forEach(function(step,i){
+      ScrollTrigger.create({
+        trigger:step,
+        start:'top 70%',
+        onEnter:function(){step.classList.add('active')},
+        onLeaveBack:function(){if(i>0)step.classList.remove('active')}
+      });
+    });
+  }
+
+  /* Section titles: scrub opacity from 0.15 → 1 */
+  document.querySelectorAll('.section-title').forEach(function(title){
+    gsap.fromTo(title,{opacity:.15,y:30},{opacity:1,y:0,ease:'power2.out',scrollTrigger:{trigger:title,start:'top 85%',end:'top 50%',scrub:1}});
+  });
+
+  /* Section labels: fade + slide up */
+  document.querySelectorAll('.section-label').forEach(function(lbl){
+    gsap.fromTo(lbl,{opacity:0,y:20},{opacity:1,y:0,duration:.8,ease:'power2.out',scrollTrigger:{trigger:lbl,start:'top 90%',toggleActions:'play none none none'}});
+  });
+
+  /* Project cards: staggered entrance with slight scale */
+  var projCards=document.querySelectorAll('#projectsGrid .project-card');
+  if(projCards.length){
+    gsap.fromTo(projCards,{opacity:0,y:40,scale:.96},{opacity:1,y:0,scale:1,duration:.6,ease:'power2.out',stagger:.12,scrollTrigger:{trigger:'#projectsGrid',start:'top 80%',toggleActions:'play none none none'}});
+  }
+
+  /* Service cards: staggered entrance */
+  var svcCards=document.querySelectorAll('.services-grid .service-card');
+  if(svcCards.length){
+    gsap.fromTo(svcCards,{opacity:0,y:35},{opacity:1,y:0,duration:.5,ease:'power2.out',stagger:.1,scrollTrigger:{trigger:'.services-grid',start:'top 80%',toggleActions:'play none none none'}});
+  }
+
+  /* Why CRAMS cards: staggered with rotation variant */
+  var whyCards=document.querySelectorAll('.why-cards-grid .service-card');
+  if(whyCards.length){
+    gsap.fromTo(whyCards,{opacity:0,y:30,rotation:function(i){return i%2===0?-2:2}},{opacity:1,y:0,rotation:0,duration:.5,ease:'power2.out',stagger:.08,scrollTrigger:{trigger:'.why-cards-grid',start:'top 80%',toggleActions:'play none none none'}});
+  }
+
+  /* Skills cards: staggered */
+  var skillCards=document.querySelectorAll('.skills-grid .skill-card');
+  if(skillCards.length){
+    gsap.fromTo(skillCards,{opacity:0,y:30},{opacity:1,y:0,duration:.5,ease:'power2.out',stagger:.1,scrollTrigger:{trigger:'.skills-grid',start:'top 80%',toggleActions:'play none none none'}});
+  }
+
+  /* Stats bar: number count-up */
+  document.querySelectorAll('.stats-bar-num').forEach(function(el){
+    var target=parseInt(el.textContent);
+    if(isNaN(target))return;
+    var obj={val:0};
+    gsap.to(obj,{val:target,duration:1.5,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 85%',toggleActions:'play none none none'},onUpdate:function(){el.textContent=obj.val}});
+  });
+
+  /* FAQ items: staggered entrance */
+  var faqItems=document.querySelectorAll('.faq-item');
+  if(faqItems.length){
+    gsap.fromTo(faqItems,{opacity:0,x:-20},{opacity:1,x:0,duration:.4,ease:'power2.out',stagger:.06,scrollTrigger:{trigger:'.faq-list',start:'top 80%',toggleActions:'play none none none'}});
+  }
+
+  /* Pricing cards: staggered with y-offset variant */
+  var priceCards=document.querySelectorAll('.section-alt .service-card');
+  if(priceCards.length>2){
+    gsap.fromTo(priceCards,{opacity:0,y:40,scale:.95},{opacity:1,y:0,scale:1,duration:.5,ease:'power2.out',stagger:.12,scrollTrigger:{trigger:'.section-alt',start:'top 75%',toggleActions:'play none none none'}});
+  }
+})();
+</script>
 <script src="js/data.js"></script>
 <script>
 /* Build hero showcase dynamically from PROJECTS data */
 (function(){
   var container=document.getElementById('hero-slides');
   if(!container||typeof PROJECTS==='undefined')return;
+
+  /* Hero-specific visual generator (duplicated from render.js for ordering) */
+  function heroVisual(cat){
+    cat=String(cat).toLowerCase().replace(/&amp;/g,'&');
+    if(cat.indexOf('e-commerce')!==-1||cat.indexOf('ecommerce')!==-1||cat.indexOf('jewelry')!==-1||cat.indexOf('luxury')!==-1)
+      return '<div class="proj-visual vis-ecommerce" style="position:absolute;inset:0"><div class="vis-overlay"><div class="prod-card"><div class="prod-thumb"></div><div class="prod-bar"></div><div class="prod-bar short"></div><div class="prod-price"></div></div><div class="prod-card"><div class="prod-thumb" style="background:linear-gradient(135deg,rgba(245,158,11,.1),rgba(138,77,255,.06))"></div><div class="prod-bar"></div><div class="prod-bar short"></div><div class="prod-price"></div></div><div class="prod-card"><div class="prod-thumb"></div><div class="prod-bar"></div><div class="prod-bar short"></div><div class="prod-price"></div></div></div></div>';
+    if(cat.indexOf('sport')!==-1||cat.indexOf('community')!==-1||cat.indexOf('pickleball')!==-1)
+      return '<div class="proj-visual vis-sports" style="position:absolute;inset:0"><div class="vis-overlay"><div class="court"></div><div class="court"></div><div class="court-line"></div><div class="court-line"></div><div class="ball"></div><div class="ball"></div></div></div>';
+    if(cat.indexOf('corporate')!==-1||cat.indexOf('construction')!==-1)
+      return '<div class="proj-visual vis-corporate" style="position:absolute;inset:0"><div class="vis-overlay"><div class="tower"></div><div class="tower"></div><div class="tower"></div><div class="beam"></div><div class="beam"></div><div class="window"></div><div class="window"></div><div class="window"></div><div class="window"></div></div></div>';
+    if(cat.indexOf('restaurant')!==-1||cat.indexOf('dining')!==-1||cat.indexOf('food')!==-1)
+      return '<div class="proj-visual vis-restaurant" style="position:absolute;inset:0"><div class="vis-overlay"><div class="plate"></div><div class="plate-inner"></div><div class="utensil"></div><div class="utensil"></div><div class="steam"></div><div class="steam"></div><div class="steam"></div></div></div>';
+    if(cat.indexOf('animation')!==-1||cat.indexOf('motion')!==-1||cat.indexOf('interactive')!==-1)
+      return '<div class="proj-visual vis-creative" style="position:absolute;inset:0"><div class="vis-overlay"><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="p-line"></div><div class="p-line"></div><div class="p-line"></div></div></div>';
+    if(cat.indexOf('ai')!==-1||cat.indexOf('saas')!==-1||cat.indexOf('tech')!==-1)
+      return '<div class="proj-visual vis-ai" style="position:absolute;inset:0"><div class="vis-overlay"><div class="chip"></div><div class="trace"></div><div class="trace"></div><div class="trace"></div><div class="trace"></div><div class="node-dot"></div><div class="node-dot"></div><div class="node-dot"></div><div class="node-dot"></div><div class="pulse"></div><div class="pulse"></div></div></div>';
+    return '<div class="proj-visual vis-creative" style="position:absolute;inset:0"><div class="vis-overlay"><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="p-line"></div><div class="p-line"></div><div class="p-line"></div></div></div>';
+  }
+
   var html='';
   PROJECTS.forEach(function(p,i){
     var style=i===0
@@ -1992,7 +2262,7 @@ document.addEventListener('DOMContentLoaded',function(){setTimeout(updateStats,1
     var cat2=p.projTags&&p.projTags[0]?stripHtml(p.projTags[0]):'';
     html+='<div class="hero-slide" data-slide="'+i+'" style="'+style+'">'
       +'<div style="position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--border);box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(99,102,241,.1);height:100%">'
-      +'<img src="'+p.img+'" alt="'+stripHtml(p.imgAlt||p.title)+'" style="width:100%;height:100%;object-fit:cover" loading="lazy"/>'
+      +heroVisual(p.heroCat)
       +'<div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(9,11,15,.92) 0%,rgba(9,11,15,.2) 40%,transparent 60%)"></div>'
       +'<div style="position:absolute;bottom:0;left:0;right:0;padding:28px">'
       +'<div style="display:flex;gap:6px;margin-bottom:12px">'
