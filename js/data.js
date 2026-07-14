@@ -1,5 +1,5 @@
 // Add a project: one object to PROJECTS. Add an app: one object to APPS.
-// Badge styles: 'primary' (#8A4DFF purple), 'blue' (#8A7CFF blue), 'secondary' (dim white)
+// Badge styles: 'primary' (purple), 'blue' (blue), 'secondary' (dim white)
 
 const PROJECTS = [
   {

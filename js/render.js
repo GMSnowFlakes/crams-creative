@@ -1,11 +1,11 @@
 // ponytail: badge style map keeps render.js ignorant of color values
 const BADGE = {
-  primary:   'background:rgba(138,77,255,.22);border:1px solid rgba(138,77,255,.5);color:#8A4DFF',
-  blue:      'background:rgba(91,44,255,.22);border:1px solid rgba(91,44,255,.5);color:#8A7CFF',
+  primary:   'background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.35);color:#a78bfa',
+  blue:      'background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.3);color:#8b5cf6',
   secondary: 'background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6)',
 };
 
-const CHECK_SVG = '<svg width="13" height="13" style="color:#8A4DFF;flex-shrink:0"><use href="#ico-check"/></svg>';
+const CHECK_SVG = '<svg width="13" height="13" style="color:var(--accent);flex-shrink:0"><use href="#ico-check"/></svg>';
 const EXTERNAL_SVG = '<svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14 21 3"/></svg>';
 const PLAY_SVG = '<svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>';
 
