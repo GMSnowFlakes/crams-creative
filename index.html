@@ -211,6 +211,10 @@
       --accent-hover: #a78bfa;
       --accent-dim: rgba(139,92,246,0.1);
       --accent-border: rgba(139,92,246,0.25);
+      --gold: #d9b46a;
+      --gold-soft: rgba(217,180,106,0.12);
+      --gold-border: rgba(217,180,106,0.32);
+      --platinum: #e8eaf0;
       --cta: #f97316;
       --cta-hover: #fb923c;
       --cta-dim: rgba(249,115,22,0.1);
@@ -315,12 +319,16 @@
     .section-inner{max-width:1280px;margin:0 auto}
     .section-label{
       font-size:11px;font-weight:600;letter-spacing:.3em;
-      text-transform:uppercase;color:var(--accent);margin-bottom:14px
+      text-transform:uppercase;color:var(--gold);margin-bottom:14px
     }
     .section-title{
       font-size:clamp(30px,4vw,50px);font-weight:700;
       letter-spacing:-.02em;line-height:1.1;margin-bottom:24px;
       text-wrap:balance
+    }
+    .gold-grad{
+      background:linear-gradient(100deg,var(--gold),#f3dca8 55%,var(--gold));
+      -webkit-background-clip:text;background-clip:text;color:transparent
     }
 
     /* ── Hero ── */
@@ -787,12 +795,17 @@
       gap:12px
     }
     .faq-icon{
-      flex-shrink:0;width:26px;height:26px;border-radius:50%;
-      background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.25);
-      display:flex;align-items:center;justify-content:center;
-      font-size:16px;color:var(--accent);transition:transform .3s,background .25s
+      position:relative;flex-shrink:0;width:26px;height:26px;border-radius:50%;
+      background:var(--gold-soft);border:1px solid var(--gold-border);color:var(--gold);
+      transition:transform .3s,background .25s,border-color .25s
     }
-    .faq-item.open .faq-icon{transform:rotate(45deg);background:rgba(139,92,246,.25)}
+    .faq-icon::before,.faq-icon::after{
+      content:"";position:absolute;left:50%;top:50%;background:currentColor;border-radius:2px;
+      transform:translate(-50%,-50%)
+    }
+    .faq-icon::before{width:11px;height:1.5px}
+    .faq-icon::after{width:1.5px;height:11px}
+    .faq-item.open .faq-icon{transform:rotate(45deg);background:var(--gold-border)}
 
     /* ── CRO: Trust strip ── */
     .trust-strip{
@@ -1186,11 +1199,11 @@
       <h1 class="hero-title" id="hero-title" style="font-size:clamp(38px,5.5vw,72px);line-height:1.04;letter-spacing:-.03em">
         <span class="hero-word" style="display:inline-block;opacity:0;transform:translateY(30px)">Websites</span>
         <span class="hero-word" style="display:inline-block;opacity:0;transform:translateY(30px)">That</span>
-        <span class="hero-word" style="display:inline-block;opacity:0;transform:translateY(30px)">Convert.</span>
+        <span class="hero-word gold-grad" style="display:inline-block;opacity:0;transform:translateY(30px)">Convert.</span>
         <br>
         <span class="hero-word" style="display:inline-block;opacity:0;transform:translateY(30px)">Systems</span>
         <span class="hero-word" style="display:inline-block;opacity:0;transform:translateY(30px)">That</span>
-        <span class="hero-word" style="display:inline-block;opacity:0;transform:translateY(30px)">Scale.</span>
+        <span class="hero-word gold-grad" style="display:inline-block;opacity:0;transform:translateY(30px)">Scale.</span>
       </h1>
       <!-- Accent line -->
       <div id="hero-line" style="height:2px;width:0;background:var(--cta);margin:28px 0;border-radius:1px;transition:width .8s cubic-bezier(.16,1,.3,1)"></div>
@@ -1616,7 +1629,7 @@
           <div class="service-outcome"><span class="outcome-dot"></span><span class="outcome-txt">CMS integration optional</span></div>
           <div class="service-outcome"><span class="outcome-dot"></span><span class="outcome-txt">Full SEO setup</span></div>
         </div>
-        <div style="margin-top:18px;padding:6px 14px;background:rgba(139,92,246,.2);border:1px solid rgba(139,92,246,.4);border-radius:20px;font-size:11px;color:var(--accent);font-weight:600;display:inline-block">Most Popular</div>
+        <div style="margin-top:18px;padding:6px 14px;background:var(--gold-soft);border:1px solid var(--gold-border);border-radius:20px;font-size:11px;color:var(--gold);font-weight:600;display:inline-block">Most Popular</div>
       </div>
       <div class="service-card fade-in" style="padding:32px;text-align:center">
         <div class="spotlight-overlay"></div>
@@ -1737,56 +1750,56 @@
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
           How long does it take to build a website?
-          <span class="faq-icon">+</span>
+          <span class="faq-icon"></span>
         </button>
         <div class="faq-a-wrap"><p class="faq-a">Most projects are completed within 1–3 weeks depending on scope. Simple landing pages can be done in 3–5 days. I'll give you a precise timeline in your free quote before we start.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
           How much does a website cost?
-          <span class="faq-icon">+</span>
+          <span class="faq-icon"></span>
         </button>
         <div class="faq-a-wrap"><p class="faq-a">Every project is unique. Pricing depends on the complexity, number of pages, and features required. I offer competitive rates with no hidden fees — send me your project details and I'll send a transparent quote within 24 hours.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
           Do you offer revisions?
-          <span class="faq-icon">+</span>
+          <span class="faq-icon"></span>
         </button>
         <div class="faq-a-wrap"><p class="faq-a">Yes — structured revision rounds are included in every project. We review together at each milestone so changes happen early, not after launch.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
           What do you need from me to get started?
-          <span class="faq-icon">+</span>
+          <span class="faq-icon"></span>
         </button>
         <div class="faq-a-wrap"><p class="faq-a">Just a brief overview of your project — what you need, your industry, any reference sites you like, and your timeline. I handle the rest: design, development, and deployment.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
           Will my website be mobile-friendly and fast?
-          <span class="faq-icon">+</span>
+          <span class="faq-icon"></span>
         </button>
         <div class="faq-a-wrap"><p class="faq-a">Always. Every site I build is fully responsive across all devices and optimised for performance. Fast load times and clean code are non-negotiable — they directly affect your SEO rankings and conversions.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
           Can you help with SEO and getting found on Google?
-          <span class="faq-icon">+</span>
+          <span class="faq-icon"></span>
         </button>
         <div class="faq-a-wrap"><p class="faq-a">Yes. All sites come with solid on-page SEO foundations: semantic HTML, meta tags, structured data, fast load times, and mobile optimisation. I also offer dedicated SEO & Growth packages for deeper strategy.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
           How much does a website cost in the Philippines?
-          <span class="faq-icon">+</span>
+          <span class="faq-icon"></span>
         </button>
         <div class="faq-a-wrap"><p class="faq-a">Website costs in the Philippines vary widely. A simple landing page starts around ₱15,000–₱30,000 while a full business website ranges from ₱30,000–₱100,000+. Crams Creative offers transparent, competitive pricing — send your project details for a free quote within 24 hours.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
           Do you work with international clients outside the Philippines?
-          <span class="faq-icon">+</span>
+          <span class="faq-icon"></span>
         </button>
         <div class="faq-a-wrap"><p class="faq-a">Absolutely. While based in the Philippines, Crams Creative regularly works with clients in the US, Australia, UK, and across Asia. All projects are handled remotely with fast communication across time zones.</p></div>
       </div>
