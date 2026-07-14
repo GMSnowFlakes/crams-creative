@@ -160,3 +160,30 @@ body.light .faq-d .faq-body{color:rgba(0,0,0,.6)}
 body.light .post-card{background:#fff;border-color:rgba(0,0,0,.08)}
 body.light .post-card h2{color:#111}
 body.light .article-cta{background:rgba(217,180,106,.1)}
+
+/* In-article hero image */
+.article-hero-img{
+  width:100%;border-radius:18px;border:1px solid var(--border);
+  display:block;margin:6px 0 30px;
+}
+/* Author box */
+.author-box{
+  display:flex;gap:16px;align-items:center;
+  margin:42px 0 6px;padding:18px 20px;
+  border:1px solid var(--border);background:var(--surface);
+  border-radius:16px;
+}
+.author-box img{width:54px;height:54px;border-radius:13px;object-fit:cover;flex-shrink:0;border:1px solid var(--border)}
+.author-box .ab-name{font-weight:700;color:#fff;font-size:15px}
+.author-box .ab-role{font-size:13px;color:var(--text-3);margin-top:3px;line-height:1.5}
+.author-box .ab-role a{color:var(--accent);text-decoration:none}
+/* Related posts */
+.related-row{margin:8px 0 30px}
+.related-row .rr-title{font-family:var(--font-display);font-size:20px;color:#fff;margin:0 0 16px}
+.related-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.related-grid .post-card{padding:18px 20px}
+.related-grid .post-card h2{font-size:17px}
+@media (max-width:600px){.related-grid{grid-template-columns:1fr}}
+body.light .author-box{background:#fff;border-color:rgba(0,0,0,.08)}
+body.light .author-box .ab-name{color:#111}
+body.light .related-row .rr-title{color:#111}
