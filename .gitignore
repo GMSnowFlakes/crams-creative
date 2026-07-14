@@ -1,0 +1,8 @@
+# Generated codegraph / graphify artifacts
+graphify-out/
+.codegraph/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
