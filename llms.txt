@@ -1,0 +1,22 @@
+# Crams Creative
+
+> Freelance web developer & designer based in the Philippines, building fast, accessible, high-converting websites, web apps, and brand experiences for businesses. Fixed-price quotes, no upsell.
+
+## Services
+- [Services](https://www.cramscreative.com/#services): Web design, web app development, branding, and SEO foundations.
+- [Process](https://www.cramscreative.com/#process): How a project goes from kickoff to launch.
+- [Why Choose CRAMS](https://www.cramscreative.com/#skills): Tech stack and approach (React, Next.js, Supabase, Tailwind, Framer Motion, Three.js).
+- [Work](https://www.cramscreative.com/#work): Selected projects and case studies.
+- [Contact](https://www.cramscreative.com/#contact): Get a free, fixed-price quote (reply within 24h).
+
+## Blog — answers to common client questions
+- [How Much Does a Website Cost in the Philippines? (2026 Rates)](https://www.cramscreative.com/blog/how-much-does-a-website-cost-philippines.html): Realistic price ranges and the factors that change the quote.
+- [How Long Does It Take to Build a Website?](https://www.cramscreative.com/blog/website-timeline-philippines.html): A realistic timeline and where delays come from.
+- [Custom Website vs Wix / Squarespace](https://www.cramscreative.com/blog/custom-website-vs-wix-squarespace.html): When a hand-built site pays off vs a DIY builder.
+- [Do You Really Need SEO?](https://www.cramscreative.com/blog/do-you-need-seo-philippines.html): When SEO moves the needle and the free day-one wins.
+- [Freelance Developer vs Agency in the Philippines](https://www.cramscreative.com/blog/freelance-web-developer-vs-agency-philippines.html): How to choose the right hire.
+- [What to Prepare Before Building a Website](https://www.cramscreative.com/blog/what-to-prepare-before-building-a-website.html): A pre-build checklist to save time and money.
+
+## Location & Contact
+- Based in the Philippines, working with clients locally and worldwide.
+- Get a quote: https://www.cramscreative.com/#contact
