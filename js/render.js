@@ -10,6 +10,7 @@ const EXTERNAL_SVG = '<svg width="11" height="11" fill="none" stroke="currentCol
 const PLAY_SVG = '<svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>';
 
 function renderProject(p) {
+  const playBtn = p.videoSrc ? `<div class="proj-play" onclick="event.stopPropagation();openVideo('${p.videoSrc}','${p.title}')">${PLAY_SVG}</div>` : '';
   return `
     <div class="project-card fade-in" data-type="${p.type}" data-tags="${p.searchTags}" data-hero-name="${p.heroName}" data-hero-cat="${p.heroCat}">
       <div class="proj-img-wrap">
@@ -17,14 +18,12 @@ function renderProject(p) {
         <div class="proj-img-overlay"></div>
         <div class="proj-badges">
           <span class="proj-badge" style="${BADGE[p.badge.style]}">${p.badge.label}</span>
-          <span class="proj-badge" style="${BADGE.secondary}">Independent Build</span>
         </div>
-        <div class="proj-info">
-          <div class="proj-title">${p.title}</div>
-          <div class="proj-line">${p.subtitle}</div>
-        </div>
+        ${playBtn}
       </div>
       <div class="proj-body">
+        <p class="proj-sub">${p.subtitle}</p>
+        <h3 class="proj-title">${p.title}</h3>
         <p class="proj-desc">${p.desc}</p>
         <div class="proj-tags">${p.projTags.map(t => `<span class="proj-tag">${t}</span>`).join('')}</div>
         <div class="proj-footer">
