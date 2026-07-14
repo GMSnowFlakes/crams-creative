@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog — Crams Creative | Web Design Insights for Philippine Businesses</title>
+  <meta name="description" content="Straight answers on website cost, timelines, custom vs template builds, and SEO in the Philippines — written for business owners by a freelance web developer & designer.">
+  <link rel="canonical" href="https://www.cramscreative.com/blog/">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Crams Creative Blog">
+  <meta property="og:description" content="Website cost, timelines, custom vs template, and SEO — answered for Philippine businesses.">
+  <meta property="og:url" content="https://www.cramscreative.com/blog/">
+  <meta property="og:image" content="https://www.cramscreative.com/brand/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/brand/favicon.png">
+  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="stylesheet" href="/assets/blog.css">
+  <script>document.documentElement.classList.add('js-ready')</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EWPF2580G4"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EWPF2580G4');</script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"CollectionPage",
+    "name":"Crams Creative Blog",
+    "url":"https://www.cramscreative.com/blog/",
+    "description":"Articles answering the most common questions Philippine business owners ask before hiring a web designer.",
+    "isPartOf":{"@type":"WebSite","name":"Crams Creative","url":"https://www.cramscreative.com/"}
+  }
+  </script>
+</head>
+<body>
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+  <symbol id="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></symbol>
+  <symbol id="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></symbol>
+</svg>
+<a href="#main" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:12px 24px;background:var(--accent);color:#fff;font-weight:600;border-radius:var(--radius-sm);text-decoration:none">Skip to content</a>
+<canvas id="grain-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.035"></canvas>
+
+<nav id="main-nav">
+  <a class="nav-logo" href="/">
+    <svg width="34" height="34" viewBox="0 0 40 40" fill="none"><defs><linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#a78bfa"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs><path d="M20 4L34 12v8H20v-8h-6v16h6v-8h14v8L20 36 6 28V12z" fill="url(#lg1)"/></svg>
+    <div id="site-logo-text"><div class="nav-logo-text-top">CRAMS</div><div class="nav-logo-text-bot">CREATIVE</div></div>
+  </a>
+  <div class="nav-links">
+    <a href="/#work" class="nav-link">Work</a>
+    <a href="/#apps" class="nav-link">Apps</a>
+    <a href="/#about" class="nav-link">About</a>
+    <a href="/#services" class="nav-link">Services</a>
+    <a href="/#process" class="nav-link">Process</a>
+    <a href="/#contact" class="nav-link">Contact</a>
+    <a href="/blog/" class="nav-link active">Blog</a>
+  </div>
+  <div class="nav-actions">
+    <button class="dark-toggle" id="themeBtn" aria-label="Toggle theme"><svg width="15" height="15"><use href="#ico-moon"/></svg></button>
+    <a class="btn-primary" href="/#contact" style="padding:9px 22px;font-size:13px">Let's Work Together&nbsp;<svg width="13" height="13"><use href="#ico-arrow"/></svg></a>
+    <button id="mobile-toggle" aria-label="Open menu" onclick="toggleMenu()"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+  </div>
+</nav>
+
+<div id="mobile-menu">
+  <a class="mob-nav-link" href="/#work">Work</a>
+  <a class="mob-nav-link" href="/#apps">Apps</a>
+  <a class="mob-nav-link" href="/#about">About</a>
+  <a class="mob-nav-link" href="/#services">Services</a>
+  <a class="mob-nav-link" href="/#process">Process</a>
+  <a class="mob-nav-link" href="/blog/">Blog</a>
+  <a class="mob-nav-link" href="/#contact">Contact</a>
+  <a class="btn-primary" href="/#contact" style="margin-top:32px;justify-content:center">Get a Free Quote →</a>
+</div>
+
+<div class="blog-shell">
+  <main class="blog-container" id="main">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a><svg width="12" height="12"><use href="#ico-arrow"/></svg>
+      <span>Blog</span>
+    </nav>
+
+    <div class="blog-hero">
+      <span class="blog-eyebrow">The CRAMS Creative Blog</span>
+      <h1>Web design, answered honestly.</h1>
+      <p class="blog-meta">Practical guides for Philippine business owners — no fluff, no upsell.</p>
+    </div>
+
+    <div class="post-grid">
+      <a class="post-card" href="/blog/how-much-does-a-website-cost-philippines.html">
+        <span class="pc-cat">Pricing</span>
+        <h2>How Much Does a Website Cost in the Philippines? (2026 Rates)</h2>
+        <p>Realistic price ranges for brochure, business, and e-commerce sites — and exactly what changes the number.</p>
+        <div class="pc-meta"><span>Mar 2026</span><span class="dot"></span><span class="pc-read">8 min read</span></div>
+      </a>
+      <a class="post-card" href="/blog/website-timeline-philippines.html">
+        <span class="pc-cat">Process</span>
+        <h2>How Long Does It Take to Build a Website? A Realistic Timeline</h2>
+        <p>From kickoff to launch: what actually takes time, where delays come from, and how to ship faster.</p>
+        <div class="pc-meta"><span>Mar 2026</span><span class="dot"></span><span class="pc-read">6 min read</span></div>
+      </a>
+      <a class="post-card" href="/blog/custom-website-vs-wix-squarespace.html">
+        <span class="pc-cat">Strategy</span>
+        <h2>Custom Website vs Wix / Squarespace: Which Actually Pays Off?</h2>
+        <p>The honest trade-offs between DIY builders and a hand-built site — and when each one wins.</p>
+        <div class="pc-meta"><span>Mar 2026</span><span class="dot"></span><span class="pc-read">7 min read</span></div>
+      </a>
+      <a class="post-card" href="/blog/do-you-need-seo-philippines.html">
+        <span class="pc-cat">Growth</span>
+        <h2>Do You Really Need SEO for Your Business Website?</h2>
+        <p>When SEO moves the needle, when it doesn't, and the free wins you can grab on day one.</p>
+        <div class="pc-meta"><span>Mar 2026</span><span class="dot"></span><span class="pc-read">6 min read</span></div>
+      </a>
+    </div>
+  </main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg width="26" height="26" viewBox="0 0 40 40" fill="none"><path d="M20 4L34 12v8H20v-8h-6v16h6v-8h14v8L20 36 6 28V12z" fill="url(#lg1)"/></svg>
+      <span style="font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--cta)">CRAMS CREATIVE</span>
+    </div>
+    <p class="footer-copy">© 2026 Crams Creative — Freelance Web Developer &amp; Designer, Philippines</p>
+    <div class="footer-links">
+      <a class="footer-link" href="/#work">Work</a>
+      <a class="footer-link" href="/#apps">Apps</a>
+      <a class="footer-link" href="/#about">About</a>
+      <a class="footer-link" href="/#services">Services</a>
+      <a class="footer-link" href="/#process">Process</a>
+      <a class="footer-link" href="/blog/">Blog</a>
+      <a class="footer-link" href="/#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/blog.js" defer></script>
+</body>
+</html>
