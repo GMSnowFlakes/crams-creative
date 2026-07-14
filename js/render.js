@@ -13,7 +13,7 @@ function renderProject(p) {
   return `
     <div class="project-card fade-in" data-type="${p.type}" data-tags="${p.searchTags}" data-hero-name="${p.heroName}" data-hero-cat="${p.heroCat}">
       <div class="proj-img-wrap">
-        <img src="${p.img}" alt="${p.imgAlt}" loading="lazy"/>
+        <img src="${p.img}" alt="${p.imgAlt}" loading="lazy" decoding="async"/>
         <div class="proj-img-overlay"></div>
         <div class="proj-badges">
           <span class="proj-badge" style="${BADGE[p.badge.style]}">${p.badge.label}</span>

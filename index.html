@@ -45,8 +45,8 @@
   <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
   <link rel="dns-prefetch" href="https://fonts.gstatic.com"/>
   <!-- Non-blocking font load -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"/></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"/></noscript>
   <link rel="alternate" hreflang="en" href="https://www.cramscreative.com/"/>
   <link rel="alternate" hreflang="x-default" href="https://www.cramscreative.com/"/>
   <!-- Preload LCP hero image -->
@@ -205,6 +205,8 @@
       --bg: #08080c;
       --surface: #12121a;
       --surface-2: #1c1c28;
+      --font: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+      --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
       --accent: #8b5cf6;
       --accent-hover: #a78bfa;
       --accent-dim: rgba(139,92,246,0.1);
@@ -224,8 +226,9 @@
       --shadow-md: 0 8px 24px rgba(0,0,0,0.5);
     }
     *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth;font-family:'Geist',sans-serif}
-    .section-title,.hero-title,.nav-logo,.faq-q{font-family:'Geist',sans-serif}
+    html{scroll-behavior:smooth;font-family:var(--font)}
+    .section-title,.hero-title,.faq-q{font-family:var(--font-display)}
+    .nav-logo{font-family:var(--font-display)}
     html,body{overflow-x:hidden;max-width:100%}
     body{background:var(--bg);color:var(--text)}
     ::-webkit-scrollbar{width:3px}
@@ -242,9 +245,9 @@
     /* ── Buttons ── */
     .btn-primary{
       display:inline-flex;align-items:center;gap:8px;
-      background:var(--cta);color:#fff;border:none;border-radius:100px;
+      background:var(--cta);color:#0a0a0f;border:none;border-radius:100px;
       padding:13px 30px;font-size:14px;font-weight:600;cursor:pointer;
-      transition:all .25s;font-family:'Geist',sans-serif;
+      transition:all .25s;font-family:var(--font);
       letter-spacing:.02em;text-decoration:none;white-space:nowrap
     }
     .btn-primary:hover{background:var(--cta-hover);transform:scale(1.03);box-shadow:0 8px 30px rgba(249,115,22,.25)}
@@ -253,7 +256,7 @@
       background:transparent;color:var(--text);
       border:1px solid rgba(255,255,255,.12);border-radius:100px;
       padding:13px 30px;font-size:14px;font-weight:500;cursor:pointer;
-      transition:all .25s;font-family:'Geist',sans-serif
+      transition:all .25s;font-family:var(--font)
     }
     .btn-secondary:hover{border-color:rgba(139,92,246,.5);color:var(--accent)}
 
@@ -276,7 +279,7 @@
     .nav-links{display:flex;gap:32px;align-items:center}
     .nav-link{
       font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-      background:none;border:none;cursor:pointer;font-family:'Geist',sans-serif;
+      background:none;border:none;cursor:pointer;font-family:var(--font);
       transition:color .2s;padding:4px 0;color:rgba(255,255,255,.72)
     }
     .nav-link:hover,.nav-link.active{color:var(--accent)}
@@ -303,7 +306,7 @@
     .mob-nav-link{
       background:none;border:none;border-bottom:1px solid rgba(255,255,255,.07);
       padding:18px 0;font-size:26px;font-weight:700;text-align:left;
-      cursor:pointer;color:var(--text);font-family:'Geist',sans-serif
+      cursor:pointer;color:var(--text);font-family:var(--font)
     }
 
     /* ── Sections ── */
@@ -339,12 +342,28 @@
     }
     .hero-dot{width:7px;height:7px;border-radius:50%;background:#22C55E;box-shadow:0 0 8px #22C55E}
     .hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
-    .hero-title{font-size:clamp(36px,5.5vw,70px);font-weight:700;line-height:1.06;margin-bottom:24px;letter-spacing:-.025em;font-family:'Geist',sans-serif;text-wrap:balance}
+    .hero-title{font-size:clamp(38px,5.8vw,76px);font-weight:800;line-height:1.04;margin-bottom:24px;letter-spacing:-.03em;font-family:var(--font-display);text-wrap:balance}
     .hero-sub{font-size:16px;line-height:1.72;color:rgba(255,255,255,.72);max-width:440px;margin-bottom:36px}
     .hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
     .hero-stats{display:flex;gap:40px;flex-wrap:wrap}
     .stat-num{font-size:clamp(20px,2.5vw,28px);font-weight:700;color:var(--accent)}
     .stat-lbl{font-size:11px;color:rgba(255,255,255,.65);margin-top:3px;letter-spacing:.04em}
+    .trust-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(255,255,255,.012);padding:24px clamp(16px,5vw,56px)}
+    .trust-inner{max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 22px}
+    .trust-lbl{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-3)}
+    .trust-chip{font-size:13px;font-weight:600;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.08);border-radius:100px;padding:6px 16px;transition:all .2s}
+    .trust-chip:hover{color:var(--text);border-color:var(--accent-border);background:var(--accent-dim)}
+    @media(max-width:930px){.trust-lbl{width:100%;text-align:center;margin-bottom:4px}}
+    .cta-band{
+      max-width:1280px;margin:0 auto;
+      border-radius:28px;padding:clamp(44px,6vw,76px) clamp(20px,5vw,64px);
+      background:radial-gradient(ellipse at 50% -10%,rgba(139,92,246,.22),transparent 68%),linear-gradient(135deg,#0d0a1e,#0a0a14);
+      border:1px solid var(--accent-border);text-align:center;position:relative;overflow:hidden
+    }
+    .cta-band h2{font-family:var(--font-display);font-size:clamp(28px,4.5vw,54px);font-weight:800;letter-spacing:-.02em;line-height:1.07;margin-bottom:18px}
+    .cta-band p{font-size:16px;color:var(--text-2);max-width:540px;margin:0 auto 34px;line-height:1.7}
+    .cta-band-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    @media(max-width:930px){.cta-band{padding:40px 22px}}
 
 
     /* ── Work / Projects ── */
@@ -358,7 +377,7 @@
     .search-bar input{
       background:transparent;border:none;outline:none;
       font-size:13px;color:var(--text);width:180px;
-      font-family:'Geist',sans-serif
+      font-family:var(--font)
     }
     .search-bar input::placeholder{color:rgba(255,255,255,.3)}
     .filter-bar{display:flex;gap:7px;flex-wrap:wrap}
@@ -367,7 +386,7 @@
       border:1px solid rgba(255,255,255,.07);background:transparent;
       color:rgba(255,255,255,.72);cursor:pointer;transition:all .2s;
       letter-spacing:.05em;text-transform:uppercase;
-      font-family:'Geist',sans-serif
+      font-family:var(--font)
     }
     .filter-btn.active{border-color:var(--accent);background:rgba(139,92,246,.18);color:var(--accent)}
 
@@ -401,7 +420,7 @@
       background:var(--accent);color:#fff;text-decoration:none;
       font-size:12px;font-weight:600;border-radius:100px;
       padding:8px 16px;transition:all .25s;letter-spacing:.02em;
-      font-family:'Geist',sans-serif;white-space:nowrap
+      font-family:var(--font);white-space:nowrap
     }
     .proj-live:hover{background:var(--accent-hover);transform:translateY(-2px);box-shadow:0 6px 20px rgba(139,92,246,.22)}
     .proj-year{font-size:11px;color:rgba(255,255,255,.58)}
@@ -589,7 +608,7 @@
       padding:14px 0;border-radius:14px;
       border:1px solid rgba(255,255,255,.07);background:var(--surface);
       text-decoration:none;color:rgba(255,255,255,.72);font-size:11px;
-      font-family:'Geist',sans-serif;transition:all .22s
+      font-family:var(--font);transition:all .22s
     }
     .social-link:hover{border-color:rgba(139,92,246,.45);color:var(--accent)}
     .contact-form{padding:38px 34px;border-radius:28px;border:1px solid rgba(255,255,255,.07);background:var(--surface)}
@@ -602,15 +621,15 @@
       padding:11px 13px;border-radius:11px;
       border:1px solid rgba(255,255,255,.07);
       background:rgba(255,255,255,.03);color:var(--text);font-size:13px;
-      font-family:'Geist',sans-serif;transition:border-color .2s
+      font-family:var(--font);transition:border-color .2s
     }
     .form-input::placeholder{color:rgba(255,255,255,.25)}
     .form-input:focus{outline:none;border-color:rgba(139,92,246,.5)}
     select.form-input{background:var(--surface)}
     .form-btn{
       width:100%;padding:15px;border-radius:13px;border:none;
-      background:var(--cta);color:#fff;font-size:14px;font-weight:600;
-      cursor:pointer;transition:all .3s;font-family:'Geist',sans-serif;
+      background:var(--cta);color:#0a0a0f;font-size:14px;font-weight:600;
+      cursor:pointer;transition:all .3s;font-family:var(--font);
       letter-spacing:.02em;margin-top:4px
     }
     .form-btn:hover{background:var(--cta-hover);box-shadow:0 8px 24px rgba(249,115,22,.2)}
@@ -625,7 +644,7 @@
     .footer-link{
       background:none;border:none;font-size:10px;cursor:pointer;
       color:rgba(255,255,255,.58);letter-spacing:.12em;text-transform:uppercase;
-      font-family:'Geist',sans-serif;transition:color .2s
+      font-family:var(--font);transition:color .2s
     }
     .footer-link:hover{color:var(--accent)}
 
@@ -712,7 +731,7 @@
       position:fixed;bottom:80px;right:24px;z-index:997;
       width:54px;height:54px;border-radius:50%;border:none;cursor:pointer;
       background:linear-gradient(135deg,var(--cta),#ea580c);
-      color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;
+      color:#0a0a0f;font-size:22px;display:flex;align-items:center;justify-content:center;
       border:1px solid rgba(255,255,255,.12);box-shadow:0 4px 14px rgba(249,115,22,.28);
       transition:transform .2s,box-shadow .2s;
       animation:float-y 3s ease-in-out infinite
@@ -738,7 +757,7 @@
     .faq-q{
       width:100%;display:flex;justify-content:space-between;align-items:center;
       padding:20px 22px;background:none;border:none;text-align:left;cursor:pointer;
-      color:var(--text);font-size:15px;font-weight:600;font-family:'Geist',sans-serif;
+      color:var(--text);font-size:15px;font-weight:600;font-family:var(--font);
       gap:12px
     }
     .faq-icon{
@@ -1164,6 +1183,19 @@
         <div style="font-size:9px;color:var(--text-3);letter-spacing:.06em">Live Apps</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Trust strip -->
+<section class="trust-strip">
+  <div class="trust-inner">
+    <span class="trust-lbl">Trusted by teams in</span>
+    <span class="trust-chip">E‑commerce</span>
+    <span class="trust-chip">SaaS &amp; Startups</span>
+    <span class="trust-chip">Agencies</span>
+    <span class="trust-chip">Restaurants &amp; Cafés</span>
+    <span class="trust-chip">Coaches &amp; Creators</span>
+    <span class="trust-chip">Local Brands</span>
   </div>
 </section>
 
@@ -1723,6 +1755,19 @@
       <button class="btn-primary" onclick="scrollToSection('contact')" style="font-size:14px">
         Ask Me Anything&nbsp;<svg width="14" height="14"><use href="#ico-arrow"/></svg>
       </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINAL CTA ═══ -->
+<section class="section" style="padding-top:0">
+  <div class="cta-band fade-in">
+    <span style="display:inline-block;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--cta);margin-bottom:18px">Let's Build</span>
+    <h2>Ready to launch something<br>that actually converts?</h2>
+    <p>Tell me about your project and get a free, no-obligation quote within 24 hours. One developer, end to end — design, build, and ship.</p>
+    <div class="cta-band-btns">
+      <button class="btn-primary" onclick="scrollToSection('contact')">Get a Free Quote&nbsp;<svg width="14" height="14"><use href="#ico-arrow"/></svg></button>
+      <button class="btn-secondary" onclick="scrollToSection('work')">See the Work</button>
     </div>
   </div>
 </section>
