@@ -303,11 +303,14 @@
 
     /* ── Mobile menu ── */
     #mobile-menu{
-      display:none;position:fixed;inset:0;z-index:999;
-      background:var(--bg);padding:80px 24px 24px;
-      flex-direction:column
+      display:flex;position:fixed;inset:0;z-index:999;
+      background:rgba(8,8,12,.97);padding:80px 24px 24px;
+      flex-direction:column;
+      opacity:0;visibility:hidden;transform:translateY(-10px);
+      transition:opacity .3s ease,visibility .3s ease,transform .3s ease;
+      backdrop-filter:blur(10px)
     }
-    #mobile-menu.open{display:flex}
+    #mobile-menu.open{opacity:1;visibility:visible;transform:translateY(0)}
     .mob-nav-link{
       background:none;border:none;border-bottom:1px solid rgba(255,255,255,.07);
       padding:18px 0;font-size:26px;font-weight:700;text-align:left;
@@ -750,7 +753,7 @@
     #sticky-cta{
       position:fixed;bottom:0;left:0;right:0;z-index:998;
       background:linear-gradient(90deg,rgba(10,5,24,.95),rgba(8,8,12,.98) 60%);
-      border-top:1px solid rgba(139,92,246,.25);
+      border-top:1px solid var(--gold-border);
       padding:13px clamp(16px,5vw,56px);
       display:flex;align-items:center;justify-content:space-between;gap:16px;
       transform:translateY(100%);transition:transform .45s cubic-bezier(.4,0,.2,1);
@@ -1173,7 +1176,9 @@
 </div>
 
 <!-- Floating hire button -->
-<button id="float-hire" onclick="scrollToSection('contact')" aria-label="Hire me">✉</button>
+<button id="float-hire" onclick="scrollToSection('contact')" aria-label="Hire me">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0a0a0f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+</button>
 <div id="float-hire-tip">Free quote — reply in 24h</div>
 
 <!-- Scroll to top -->
