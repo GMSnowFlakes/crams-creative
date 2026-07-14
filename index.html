@@ -354,16 +354,16 @@
     .trust-chip{font-size:13px;font-weight:600;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.08);border-radius:100px;padding:6px 16px;transition:all .2s}
     .trust-chip:hover{color:var(--text);border-color:var(--accent-border);background:var(--accent-dim)}
     @media(max-width:930px){.trust-lbl{width:100%;text-align:center;margin-bottom:4px}}
-    .cta-band{
-      max-width:1280px;margin:0 auto;
-      border-radius:28px;padding:clamp(44px,6vw,76px) clamp(20px,5vw,64px);
-      background:radial-gradient(ellipse at 50% -10%,rgba(139,92,246,.22),transparent 68%),linear-gradient(135deg,#0d0a1e,#0a0a14);
-      border:1px solid var(--accent-border);text-align:center;position:relative;overflow:hidden
+    .cta-band-wrap{
+      background:radial-gradient(ellipse at 50% 0%,rgba(139,92,246,.16),transparent 68%),linear-gradient(180deg,#0c0a1a 0%,#08080c 100%);
+      border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+      padding:clamp(64px,9vw,120px) clamp(16px,5vw,56px);text-align:center;position:relative;overflow:hidden
     }
+    .cta-band{max-width:720px;margin:0 auto}
     .cta-band h2{font-family:var(--font-display);font-size:clamp(28px,4.5vw,54px);font-weight:800;letter-spacing:-.02em;line-height:1.07;margin-bottom:18px}
     .cta-band p{font-size:16px;color:var(--text-2);max-width:540px;margin:0 auto 34px;line-height:1.7}
     .cta-band-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-    @media(max-width:930px){.cta-band{padding:40px 22px}}
+    @media(max-width:930px){.cta-band-wrap{padding:56px 20px}}
 
 
     /* ── Work / Projects ── */
@@ -1760,7 +1760,7 @@
 </section>
 
 <!-- ═══ FINAL CTA ═══ -->
-<section class="section" style="padding-top:0">
+<section class="cta-band-wrap">
   <div class="cta-band fade-in">
     <span style="display:inline-block;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--cta);margin-bottom:18px">Let's Build</span>
     <h2>Ready to launch something<br>that actually converts?</h2>
