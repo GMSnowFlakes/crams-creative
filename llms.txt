@@ -5,7 +5,7 @@
 ## Pages
 - [Work](https://www.cramscreative.com/#work): Live website projects with case studies (e-commerce, corporate, restaurant, sports club, SaaS).
 - [Apps](https://www.cramscreative.com/#apps): Custom business software with demo videos (ClinicOS, PayrollOS, InventoryOS, Invoicer, POS).
-- [Services](https://www.cramscreative.com/#services): Websites, web apps & systems, branding, UI/UX, SEO, maintenance.
+- [Services](https://www.cramscreative.com/#services): Websites, web apps & systems, branding, UI/UX, SEO, maintenance, motion & video ([#motion](https://www.cramscreative.com/#motion)).
 - [Process](https://www.cramscreative.com/#process): Five steps from discovery to launch and scale.
 - [Pricing](https://www.cramscreative.com/#pricing): Landing pages from $59, business websites from $299, custom quotes for apps and e-commerce.
 - [About](https://www.cramscreative.com/#about): Marc Patrick Orcullo, founder; tech stack in [#skills](https://www.cramscreative.com/#skills) (React, Next.js, Supabase, Tailwind, Framer Motion, Three.js).

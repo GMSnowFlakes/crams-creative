@@ -107,11 +107,11 @@ const ld = {
       areaServed: ['Philippines', 'Worldwide'],
       founder: { '@id': `${base}#marc` },
       sameAs: [SITE.linkedin],
-      knowsAbout: ['Web development', 'Web design', 'UI/UX design', 'Branding', 'SEO', 'Web applications', 'React', 'Next.js'],
+      knowsAbout: ['Web development', 'Web design', 'UI/UX design', 'Branding', 'SEO', 'Web applications', 'Motion graphics', 'Video production', 'Three.js', 'React', 'Next.js'],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Web design & development services',
-        itemListElement: ['Websites', 'Web apps & business systems', 'Branding', 'UI/UX design', 'SEO & growth', 'Website maintenance']
+        itemListElement: ['Websites', 'Web apps & business systems', 'Branding', 'UI/UX design', 'SEO & growth', 'Website maintenance', 'Promo & app showcase videos']
           .map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s } })),
       },
     },
