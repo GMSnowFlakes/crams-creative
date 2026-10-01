@@ -199,6 +199,35 @@ button.tile{text-align:left;width:100%}
 .proj:has(.proj-open:focus-visible){outline:2.5px solid var(--accent);outline-offset:3px}
 .t-video.s12{min-height:clamp(220px,24vw,320px)}
 
+/* ───────── 3D / motion showcase ───────── */
+.showcase{display:grid;gap:12px}
+.stage{position:relative;border-radius:var(--r-tile);overflow:hidden;background:#07060c;aspect-ratio:16/8;box-shadow:var(--shadow-lift)}
+.stage-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.stage::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,6,12,.82) 0%,rgba(7,6,12,.35) 45%,rgba(7,6,12,0) 70%),linear-gradient(0deg,rgba(7,6,12,.6),rgba(7,6,12,0) 45%);pointer-events:none}
+.stage-info{position:absolute;left:clamp(18px,3vw,36px);bottom:clamp(18px,3vw,34px);right:40%;z-index:2;color:#fff}
+.stage-tag{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#c4b5fd}
+.stage-title{font-size:clamp(22px,2.4vw,32px);color:#fff;margin-top:8px}
+.stage-desc{margin-top:8px;font-size:15px;line-height:1.55;color:rgba(255,255,255,.78);max-width:52ch}
+.stage-tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.stage-tools span{padding:5px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.25);font-size:12px;color:rgba(255,255,255,.85)}
+.stage-play{position:absolute;right:22px;top:22px;z-index:3;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.92);color:#141b34;display:none;align-items:center;justify-content:center}
+.stage-play .ico{width:18px;height:18px;fill:currentColor;stroke:none;margin-left:2px}
+.stage.paused .stage-play{display:flex}
+.thumbs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.thumb{position:relative;display:block;border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#07060c;text-align:left;
+  box-shadow:0 0 0 1px var(--line);transition:translate .25s var(--ease),box-shadow .25s}
+.thumb img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .25s}
+.thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,6,12,.85),rgba(7,6,12,0) 65%)}
+.thumb-text{position:absolute;left:10px;right:10px;bottom:8px;z-index:1;display:grid;gap:2px}
+.thumb-text b{font-size:13px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.thumb-text small{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c4b5fd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.thumb:hover{translate:0 -2px}
+.thumb:hover img,.thumb.is-on img{opacity:1}
+.thumb.is-on{box-shadow:0 0 0 2.5px var(--accent),0 10px 24px rgba(109,63,224,.25)}
+.reel-wrap{display:grid;gap:12px}
+.reel-more{justify-self:end;display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--accent);text-decoration:none}
+.reel-more .ico{width:15px;height:15px}
+
 /* ───────── Services / process / pricing ───────── */
 .svc-wide{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr);gap:26px;align-items:center}
 .reel{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
@@ -350,6 +379,11 @@ dialog.modal[open]{animation:dlgIn .35s var(--ease)}
   .bento-frame{padding:8px;border-radius:26px}
   .bento,.steps,.plans,.stack-grid,.contact-grid{grid-template-columns:minmax(0,1fr)}
   .svc-wide{grid-template-columns:minmax(0,1fr)}
+  .stage{aspect-ratio:4/5}
+  .stage::after{background:linear-gradient(0deg,rgba(7,6,12,.9) 0%,rgba(7,6,12,.5) 45%,rgba(7,6,12,0) 75%)}
+  .stage-info{right:18px}
+  .thumbs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .thumb:last-child:nth-child(odd){grid-column:span 2;aspect-ratio:32/9}
   .reel{grid-template-columns:minmax(0,1fr)}
   .bento > *{grid-column:auto!important}
   .t-apps{grid-template-columns:minmax(0,1fr)}

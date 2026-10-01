@@ -179,6 +179,59 @@ const APPS = [
   },
 ];
 
+// 3D, motion & cinematic work (Work page showcase + Motion & video service card).
+// video: mp4 in media/motion/   poster: 640×360 WebP in images/motion/   reel: also show on the service card
+const MOTION = [
+  {
+    slug: 'particle-holo',
+    title: 'Particle Hologram',
+    tag: 'Particles / VFX',
+    video: 'media/motion/3d-holo-loop.mp4',
+    poster: 'images/motion/3d-holo-loop.webp',
+    desc: 'A GPU particle system assembling a holographic mark: thousands of points, depth of field and buffer-animated motion.',
+    tools: ['WebGL', 'Particles', 'Points'],
+    reel: true,
+  },
+  {
+    slug: 'villa-solano',
+    title: 'Villa Solano — Cinematic Walkthrough',
+    tag: 'Real estate / Cinematic',
+    video: 'media/motion/villa-solano-walkthrough.mp4',
+    poster: 'images/motion/villa-solano.webp',
+    desc: 'An end-to-end luxury property walkthrough: a golden-hour exterior opening, six interior rooms and a dusk hero, each shot a real moving dolly with a locked style so the whole house stays consistent.',
+    tools: ['Cinematography', 'Motion', 'Color grade', 'Sequence'],
+    reel: true,
+  },
+  {
+    slug: 'product-reveal',
+    title: '3D Product Reveal',
+    tag: 'Product / 3D',
+    video: 'media/motion/3d-reveal-loop.mp4',
+    poster: 'images/motion/3d-reveal-loop.webp',
+    desc: 'A real-time 3D product presentation: glossy branded geometry with cinematic rim lighting, motion math and a seamless loop.',
+    tools: ['React Three Fiber', 'Three.js', 'GLB'],
+  },
+  {
+    slug: 'morph-sculpture',
+    title: 'Procedural Morphing Sculpture',
+    tag: 'Shader / Motion',
+    video: 'media/motion/3d-morph-loop.mp4',
+    poster: 'images/motion/3d-morph-loop.webp',
+    desc: 'An organic shape driven by vertex shaders and Framer Motion physics, deforming geometry in the browser and looped perfectly.',
+    tools: ['Shader', 'Framer Motion', 'Drei'],
+    reel: true,
+  },
+  {
+    slug: 'wireframe-viz',
+    title: 'Wireframe Engineering Viz',
+    tag: 'Data / Technical',
+    video: 'media/motion/3d-blueprint-loop.mp4',
+    poster: 'images/motion/3d-blueprint-loop.webp',
+    desc: 'A translucent mesh hologram with glowing nodes and connected data lines: technical visualization in motion.',
+    tools: ['Three.js', 'LineGeometry', 'Grid'],
+  },
+];
+
 // Only real, attributable reviews. Shown on Home + About.
 // avatar: optional square image (96×96 WebP works well).
 const TESTIMONIALS = [
@@ -227,4 +280,4 @@ const FAQ = [
 ];
 
 // Expose for Node (scripts/build.mjs). Harmless in the browser.
-if (typeof module !== 'undefined') module.exports = { SITE, PROJECTS, APPS, TESTIMONIALS, FAQ };
+if (typeof module !== 'undefined') module.exports = { SITE, PROJECTS, APPS, MOTION, TESTIMONIALS, FAQ };

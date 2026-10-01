@@ -9,7 +9,7 @@ import path from 'node:path';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
-const { SITE, PROJECTS, APPS, TESTIMONIALS, FAQ } = require(path.join(root, 'js/data.js'));
+const { SITE, PROJECTS, APPS, MOTION, TESTIMONIALS, FAQ } = require(path.join(root, 'js/data.js'));
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const ico = (id, cls = 'ico') => `<svg class="${cls}"><use href="#i-${id}"/></svg>`;
@@ -21,6 +21,7 @@ for (const p of PROJECTS) for (const w of [1200, 640]) {
   const h = w * 10 / 16;
   need(`images/work/${p.slug}-${w}.webp`, `ffmpeg -i project-images/${p.slug}.jpg -vf "scale=${w}:${h}:force_original_aspect_ratio=increase,crop=${w}:${h}" -c:v libwebp -quality 78 images/work/${p.slug}-${w}.webp`);
 }
+for (const m of MOTION) { need(m.video, '(motion video)'); need(m.poster, '(640x360 WebP poster)'); }
 for (const a of APPS) for (const w of [1200, 640]) need(`images/apps/${a.slug}-${w}.webp`, '(screenshot from the demo video, 16:10)');
 
 const srcset = (dir, slug) => `/images/${dir}/${slug}-640.webp 640w, /images/${dir}/${slug}-1200.webp 1200w`;
@@ -79,6 +80,29 @@ R.apps = APPS.map((a, i) => `<article class="tile proj ${APP_SPANS[i % APP_SPANS
               <div class="row">${a.tags.map((tag) => `<span class="chip">${esc(tag)}</span>`).join('')}<span class="more">Watch demo ${ico('play')}</span></div>
             </div>
           </article>`).join('\n          ');
+
+
+const m0 = MOTION[0];
+R.motion = `<div class="showcase" data-showcase>
+            <div class="stage">
+              <video class="stage-video" muted playsinline loop preload="none" poster="/${esc(m0.poster)}" data-src="/${esc(m0.video)}" aria-label="${esc(m0.title)}"></video>
+              <button class="stage-play" type="button" aria-label="Play animation">${ico('play')}</button>
+              <div class="stage-info">
+                <p class="stage-tag">${esc(m0.tag)}</p>
+                <h3 class="stage-title">${esc(m0.title)}</h3>
+                <p class="stage-desc">${esc(m0.desc)}</p>
+                <div class="stage-tools">${m0.tools.map((x) => `<span>${esc(x)}</span>`).join('')}</div>
+              </div>
+            </div>
+            <div class="thumbs" role="list">
+${MOTION.map((m, i) => `              <button class="thumb${i ? '' : ' is-on'}" type="button" role="listitem" aria-pressed="${i ? 'false' : 'true'}" data-video="/${esc(m.video)}" data-poster="/${esc(m.poster)}" data-tag="${esc(m.tag)}" data-title="${esc(m.title)}" data-desc="${esc(m.desc)}" data-tools="${esc(m.tools.join('|'))}" data-inline>
+                <img src="/${esc(m.poster)}" width="640" height="360" alt="" loading="lazy">
+                <span class="thumb-text"><b>${esc(m.title)}</b><small>${esc(m.tag)}</small></span>
+              </button>`).join('\n')}
+            </div>
+          </div>`;
+
+R['motion-reel'] = MOTION.filter((m) => m.reel).map((m) => `<button class="reel-item" type="button" data-video="/${esc(m.video)}" data-video-title="${esc(m.title)}" aria-label="Play: ${esc(m.title)}"><img src="/${esc(m.poster)}" width="640" height="360" alt="" loading="lazy"><span class="playmark">${ico('play')}</span><span class="reel-cap">${esc(m.tag)}</span></button>`).join('\n              ');
 
 R.faq = FAQ.map((f, i) => `<details${i ? '' : ' open'}><summary>${esc(f.q)}</summary><div class="a">${esc(f.a)}</div></details>`).join('\n        ');
 

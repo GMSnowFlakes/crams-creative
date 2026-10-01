@@ -136,7 +136,7 @@
 
   var vd = $('#videoDialog'), vdVideo = $('#vdVideo');
   doc.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-video]');
+    var t = e.target.closest('[data-video]:not([data-inline])');
     if (!t || !vd) return;
     var title = t.getAttribute('data-video-title') || 'Video';
     $('#vdTitle').textContent = title;
@@ -144,6 +144,46 @@
     openDialog(vd);
     var p = vdVideo.play(); if (p && p.catch) p.catch(function () {});
     track('video_play', { video_title: title });
+  });
+
+
+  /* ── 3D / motion showcase (inline player) ──────────── */
+  $$('[data-showcase]').forEach(function (sc) {
+    var stage = $('.stage', sc), video = $('.stage-video', stage), playBtn = $('.stage-play', stage);
+    var visible = false, userPaused = false;
+    function sync() {
+      var shouldPlay = visible && !doc.hidden && !userPaused && sc.offsetParent !== null && !reduceMotion;
+      if (shouldPlay) {
+        if (!video.getAttribute('src')) video.src = video.getAttribute('data-src');
+        var p = video.play(); if (p && p.catch) p.catch(function () { stage.classList.add('paused'); });
+        stage.classList.remove('paused');
+      } else {
+        if (!video.paused) video.pause();
+        if (reduceMotion || userPaused) stage.classList.add('paused');
+      }
+    }
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { visible = en[0].intersectionRatio > 0.35; sync(); }, { threshold: [0, 0.35, 0.7] }).observe(stage);
+    doc.addEventListener('visibilitychange', sync);
+    window.addEventListener('hashchange', function () { setTimeout(sync, 50); });
+    if (reduceMotion) stage.classList.add('paused');
+    playBtn.addEventListener('click', function () { userPaused = false; if (!video.getAttribute('src')) video.src = video.getAttribute('data-src'); video.play(); stage.classList.remove('paused'); });
+    video.addEventListener('click', function () { if (video.paused) playBtn.click(); else { userPaused = true; video.pause(); stage.classList.add('paused'); } });
+    $$('.thumb', sc).forEach(function (th) {
+      th.addEventListener('click', function () {
+        $$('.thumb', sc).forEach(function (o) { o.classList.toggle('is-on', o === th); o.setAttribute('aria-pressed', String(o === th)); });
+        $('.stage-tag', stage).textContent = th.getAttribute('data-tag');
+        $('.stage-title', stage).textContent = th.getAttribute('data-title');
+        $('.stage-desc', stage).textContent = th.getAttribute('data-desc');
+        $('.stage-tools', stage).innerHTML = '';
+        th.getAttribute('data-tools').split('|').forEach(function (x) { var sp = doc.createElement('span'); sp.textContent = x; $('.stage-tools', stage).appendChild(sp); });
+        video.setAttribute('aria-label', th.getAttribute('data-title'));
+        video.poster = th.getAttribute('data-poster');
+        video.setAttribute('data-src', th.getAttribute('data-video'));
+        video.src = th.getAttribute('data-video');
+        userPaused = false; visible = true; sync();
+        track('motion_view', { item: th.getAttribute('data-title') });
+      });
+    });
   });
 
   /* ── Featured work preview carousel ────────────────── */
