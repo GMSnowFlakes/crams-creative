@@ -1,37 +1,47 @@
-/* ── Blog shared behaviour (CRAMS Creative) ──
-   Minimal + guarded: theme toggle, mobile menu, sticky nav, scroll-top.
-   Reuses global markup (nav/footer) so it never throws on missing elements. */
-(function(){
-  /* Theme toggle */
+/* ── Blog behaviour (Crams Creative) ──
+   Theme toggle (shared with the homepage via localStorage), mobile menu, sticky nav. */
+(function () {
+  var root = document.documentElement;
+
+  /* Theme */
   var themeBtn = document.getElementById('themeBtn');
-  if(themeBtn){
-    var isDark = true;
-    themeBtn.addEventListener('click', function(){
-      isDark = !isDark;
-      document.body.classList.toggle('light', !isDark);
-      themeBtn.innerHTML = isDark
-        ? '<svg width="15" height="15"><use href="#ico-moon"/></svg>'
-        : '<svg width="15" height="15"><use href="#ico-sun"/></svg>';
+  function current() {
+    var t = root.getAttribute('data-theme');
+    if (t) return t;
+    return window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  function paint() {
+    if (!themeBtn) return;
+    var dark = current() === 'dark';
+    themeBtn.innerHTML = '<svg width="16" height="16" fill="none" stroke="currentColor"><use href="#' + (dark ? 'ico-sun' : 'ico-moon') + '"/></svg>';
+    themeBtn.setAttribute('aria-pressed', String(dark));
+    themeBtn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+  }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function () {
+      var next = current() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      paint();
     });
+    paint();
   }
 
   /* Mobile menu */
-  window.toggleMenu = function(){
+  window.toggleMenu = function () {
     var m = document.getElementById('mobile-menu');
     var btn = document.getElementById('mobile-toggle');
-    if(!m) return;
+    if (!m) return;
     var open = m.classList.toggle('open');
-    if(btn) btn.classList.toggle('open', open);
-    document.body.style.overflow = open ? 'hidden' : '';
+    if (btn) { btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); }
   };
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('#mobile-menu a')) { var m = document.getElementById('mobile-menu'); if (m) m.classList.remove('open'); }
+  });
 
-  /* Sticky nav shadow + scroll-top reveal */
+  /* Sticky nav border */
   var nav = document.getElementById('main-nav');
-  var scrollTop = document.getElementById('scroll-top');
-  function onScroll(){
-    if(nav) nav.classList.toggle('scrolled', window.scrollY > 60);
-    if(scrollTop) scrollTop.classList.toggle('visible', window.scrollY > 600);
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
+  function onScroll() { if (nav) nav.classList.toggle('scrolled', window.scrollY > 10); }
+  window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 })();

@@ -13,10 +13,14 @@
   <meta property="og:url" content="https://www.cramscreative.com/blog/">
   <meta property="og:image" content="https://www.cramscreative.com/brand/og.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="/brand/favicon.png">
-  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/brand/icon-32.png">
+  <link rel="apple-touch-icon" href="/images/brand/icon-180.png">
+  <meta name="theme-color" content="#f5f3ee">
+  <link rel="preload" href="/assets/fonts/poppins-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/tokens.css">
   <link rel="stylesheet" href="/assets/blog.css">
-  <script>document.documentElement.classList.add('js-ready')</script>
+  <script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')d.setAttribute('data-theme',t);}catch(e){}})();</script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-EWPF2580G4"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EWPF2580G4');</script>
   <script type="application/ld+json">
@@ -37,20 +41,9 @@
   <symbol id="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></symbol>
 </svg>
 <a href="#main" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:12px 24px;background:var(--accent);color:#fff;font-weight:600;border-radius:var(--radius-sm);text-decoration:none">Skip to content</a>
-<canvas id="grain-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.035"></canvas>
 
 <nav id="main-nav">
-  <a class="nav-logo" href="/">
-    <img id="site-logo" src="/brand/logo.png" alt="Crams Creative"
-         style="height:52px;width:auto;max-width:52px;object-fit:contain;border-radius:10px"
-         onload="document.getElementById('site-logo-text').style.display='none'"
-         onerror="this.style.display='none';document.getElementById('site-logo-fallback').style.display='inline-block'"/>
-    <svg id="site-logo-fallback" width="34" height="34" viewBox="0 0 40 40" fill="none" style="display:none">
-      <defs><linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#a78bfa"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs>
-      <path d="M20 4L34 12v8H20v-8h-6v16h6v-8h14v8L20 36 6 28V12z" fill="url(#lg1)"/>
-    </svg>
-    <div id="site-logo-text"><div class="nav-logo-text-top">CRAMS</div><div class="nav-logo-text-bot">CREATIVE</div></div>
-  </a>
+  <a class="nav-logo" href="/"><img src="/images/brand/emblem-96.webp" width="36" height="36" alt=""><span>Crams Creative</span></a>
   <div class="nav-links">
     <a href="/#work" class="nav-link">Work</a>
     <a href="/#apps" class="nav-link">Apps</a>
@@ -61,8 +54,8 @@
     <a href="/blog/" class="nav-link active">Blog</a>
   </div>
   <div class="nav-actions">
-    <button class="dark-toggle" id="themeBtn" aria-label="Toggle theme"><svg width="15" height="15"><use href="#ico-moon"/></svg></button>
-    <a class="btn-primary" href="/#contact" style="padding:9px 22px;font-size:13px">Let's Work Together&nbsp;<svg width="13" height="13"><use href="#ico-arrow"/></svg></a>
+    <button class="dark-toggle" id="themeBtn" aria-label="Switch to dark theme" aria-pressed="false"><svg width="15" height="15"><use href="#ico-moon"/></svg></button>
+    <a class="btn-primary" href="/#contact" style="padding:9px 22px;font-size:13px">Get a free quote&nbsp;<svg width="13" height="13"><use href="#ico-arrow"/></svg></a>
     <button id="mobile-toggle" aria-label="Open menu" onclick="toggleMenu()"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
   </div>
 </nav>
@@ -135,8 +128,7 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <svg width="26" height="26" viewBox="0 0 40 40" fill="none"><path d="M20 4L34 12v8H20v-8h-6v16h6v-8h14v8L20 36 6 28V12z" fill="url(#lg1)"/></svg>
-      <span style="font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--cta)">CRAMS CREATIVE</span>
+      <img src="/images/brand/emblem-96.webp" width="28" height="28" alt=""><span>Crams Creative</span>
     </div>
     <p class="footer-copy">© 2026 Crams Creative — Freelance Web Developer &amp; Designer, Philippines</p>
     <div class="footer-links">
