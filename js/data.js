@@ -143,7 +143,7 @@ const APPS = [
     category: 'Clinic management',
     desc: 'Patients, appointments, records, packages, inventory and billing — one system for clinics.',
     tags: ['React', 'Node.js', 'MySQL'],
-    video: 'app-videos/ClinicOS-Demo.mp4',
+    video: 'app-videos/clinicos-showcase.mp4',
   },
   {
     slug: 'payrollos',
@@ -151,7 +151,7 @@ const APPS = [
     category: 'Payroll & HR',
     desc: 'Automated payroll, tax computation, leave and payslips for growing teams.',
     tags: ['React', 'Node.js', 'MySQL'],
-    video: 'app-videos/PayrollOS-Demo.mp4',
+    video: 'app-videos/payrollos-showcase.mp4',
   },
   {
     slug: 'inventoryos',
@@ -159,7 +159,7 @@ const APPS = [
     category: 'Inventory & stock',
     desc: 'Real-time stock tracking, low-stock alerts and reorder insights across branches.',
     tags: ['React', 'Node.js', 'MySQL'],
-    video: 'app-videos/InventoryOS-Demo.mp4',
+    video: 'app-videos/inventoryos-showcase.mp4',
   },
   {
     slug: 'invoicer',
@@ -167,7 +167,7 @@ const APPS = [
     category: 'Invoicing',
     desc: 'Create, manage and send professional invoices in seconds.',
     tags: ['JavaScript', 'PDF export'],
-    video: 'app-videos/invoicer-demo.mp4',
+    video: 'app-videos/invoicer-showcase.mp4',
   },
   {
     slug: 'pickleball-pos',
@@ -175,7 +175,7 @@ const APPS = [
     category: 'Point of sale',
     desc: 'Queue tickets, court status, memberships and rentals for a sports venue — live on every screen.',
     tags: ['JavaScript', 'POS'],
-    video: 'app-videos/pickleball-hub-demo.mp4',
+    video: 'app-videos/pickleball-pos-showcase.mp4',
   },
 ];
 
