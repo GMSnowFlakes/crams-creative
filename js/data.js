@@ -20,7 +20,7 @@ const SITE = {
   linkedin: 'https://www.linkedin.com/in/marc-patrick-orcullo-8903b117a',
   // WhatsApp number in international format, digits only (e.g. '639171234567').
   // Leave empty to hide every WhatsApp button.
-  whatsapp: '',
+  whatsapp: '639951853184',
   whatsappText: 'Hi Marc! I found Crams Creative and would like a quote for a website.',
   formspree: 'https://formspree.io/f/mdavkjow',
 };
@@ -180,12 +180,13 @@ const APPS = [
 ];
 
 // Only real, attributable reviews. Shown on Home + About.
-// TODO(Marc): replace name/role/quote with your first client's exact details.
+// avatar: optional square image (96×96 WebP works well).
 const TESTIMONIALS = [
   {
-    quote: 'Crams delivered beyond expectations. The site looks stunning and actually converts — inquiries tripled in month one.',
-    name: 'First client',
-    role: 'Business owner',
+    quote: "We hired Marc for our WordPress website design and we highly recommend his service! He was very prompt on updating us regarding the project's progress and communication was smooth all throughout. We were incredibly satisfied with the result! 5/5 stars and we'll definitely keep him in mind for our future projects!",
+    name: 'BoredSprites',
+    role: 'WordPress website client',
+    avatar: 'images/brand/client-boredsprites.webp',
   },
 ];
 

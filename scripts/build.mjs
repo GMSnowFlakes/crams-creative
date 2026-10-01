@@ -37,7 +37,7 @@ ${PROJECTS.map((p, i) => `                <img src="/images/work/${p.slug}-640.w
 const t = TESTIMONIALS[0];
 R.testimonial = t ? `<div class="stars" role="img" aria-label="Rated 5 out of 5">${ico('star').repeat(5)}</div>
             <blockquote class="quote">${esc(t.quote)}</blockquote>
-            <div class="quote-by"><span class="avatar" aria-hidden="true">${esc(t.name.trim()[0] || '★')}</span><div><strong>${esc(t.name)}</strong><span>${esc(t.role)}</span></div></div>` : '';
+            <div class="quote-by">${t.avatar ? `<img class="avatar" src="/${esc(t.avatar)}" width="38" height="38" alt="" loading="lazy">` : `<span class="avatar" aria-hidden="true">${esc(t.name.trim()[0] || '★')}</span>`}<div><strong>${esc(t.name)}</strong><span>${esc(t.role)}</span></div></div>` : '';
 
 R.stats = `<div class="stats">
               <div class="stat"><b>${PROJECTS.length}</b><span>live website builds</span></div>
